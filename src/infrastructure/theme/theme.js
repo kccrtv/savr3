@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
     font-weight: ${(props) => props.weight || '400'};
     background-image: linear-gradient(50.62deg, #FBC972 2.44%, rgba(255, 255, 255, 0) 80.52%);
+	height: 100vh;
     }
 	
 	h1, h2, h3, h4, h5, h6 {
@@ -25,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     border: 0;
-    display: inline-block;
+    display: block;
     padding: 12px 24px;
     font-size: 14px;
     border-radius: 4px;
