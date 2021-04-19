@@ -1,8 +1,16 @@
 export const fonts = {
 	body: 'Inconsolata_400Regular',
-	heading: 'Inconsolata_700Bold',
+	// heading: 'font-family: 'Berkshire Swash', cursive',
 	monospace: 'Inconsolata_400Regular',
 };
+
+/* <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"> */
+
+/**
+ * font-family: 'Berkshire Swash', cursive;
+font-family: 'Open Sans', sans-serif;
+ */
 
 export const fontWeights = {
 	regular: 400,
