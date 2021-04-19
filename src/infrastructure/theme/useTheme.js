@@ -12,16 +12,11 @@ export const useTheme = () => {
 		setTheme(mode);
 	};
 
-	const getIcons = () => {
-		const allIcons = _.values(_.mapValues(themes.data, 'icon'));
-		return allIcons;
-	};
-
 	useEffect(() => {
 		const localTheme = getFromLS('theme');
 		localTheme ? setTheme(localTheme) : setTheme(themes.data.light);
 		setThemeLoaded(true);
 	}, []);
 
-	return { theme, themeLoaded, setMode, getIcons };
+	return { theme, themeLoaded, setMode };
 };

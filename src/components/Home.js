@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-import {
-	LogoButton,
-	LogoDiv,
-	SplashBG,
-	LightTheme,
-	GlobalStyle,
-} from '../infrastructure/theme/theme';
+import { GlobalStyles } from '../infrastructure/theme/GlobalStyles';
+import { useTheme } from '../infrastructure/theme/useTheme';
+import NavBar from '../components/NavBar';
 
-export default function Home(props) {
+function Home(props) {
+	const { theme, themeLoaded } = useTheme();
+	const [selectedTheme, setSelectedTheme] = useState(theme);
+
+	useEffect(() => {
+		setSelectedTheme(theme);
+	}, [themeLoaded]);
 	return (
 		<>
-			<GlobalStyle />
-			<ThemeProvider theme={LightTheme}>
-				<h1>Savr</h1>
-			</ThemeProvider>
+			{themeLoaded && (
+				<ThemeProvider theme={selectedTheme}>
+					<GlobalStyles />
+					<NavBar />
+				</ThemeProvider>
+			)}
 		</>
 	);
 }
+
+export default Home;

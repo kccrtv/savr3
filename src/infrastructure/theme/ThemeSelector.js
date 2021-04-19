@@ -3,33 +3,28 @@ import styled from 'styled-components';
 import _, { lastIndexOf } from 'lodash';
 import { useTheme } from './useTheme';
 import { getFromLS } from '../../utils/storage';
-import moon from '../../assets/moon.svg';
-import lightbulb from '../../assets/lightbulb.svg';
 import theme from 'styled-theming';
 
 const Container = styled.div`
-	padding: 0 16px;
 	display: flex;
-	justify-content: flex-end;
-`;
-
-const IconImg = styled.img`
-	width: 22px;
-	fill: #ad7d00;
+	justify-content: space-between;
+	align-items: center;
 `;
 
 const ThemedButton = styled.button`
 	border: none;
-	font-size: 14px;
 	cursor: pointer;
+	text-align: center;
+	margin: 0 4px;
+	padding: 4px 16px;
+	height: 32px;
 `;
 
 const Wrapper = styled.li`
-	display: inline-block;
+	display: inline;
 	text-align: center;
-	border-radius: 4px;
 	list-style: none;
-	padding: 8px;
+	margin: 0;
 `;
 
 export default function ThemeSelector(props) {
@@ -60,32 +55,29 @@ export default function ThemeSelector(props) {
 
 	const ThemeCard = (props) => {
 		return (
-			<Wrapper
+			<ThemedButton
+				onClick={(theme) => themeSwitcher(props.theme)}
 				style={{
-					color: `${data[_.camelCase(props.theme.name)].colors.text}`,
+					backgroundColor: `${
+						data[_.camelCase(props.theme.name)].colors.button.background
+					}`,
+					color: `${data[_.camelCase(props.theme.name)].colors.button.text}`,
 				}}>
-				<ThemedButton
-					onClick={(theme) => themeSwitcher(props.theme)}
+				{props.theme.name}
+				<Wrapper
 					style={{
-						backgroundColor: `${
-							data[_.camelCase(props.theme.name)].colors.button.background
-						}`,
-						color: `${data[_.camelCase(props.theme.name)].colors.button.text}`,
-					}}>
-					{props.theme.name}
-				</ThemedButton>
-			</Wrapper>
+						color: `${data[_.camelCase(props.theme.name)].colors.text}`,
+					}}></Wrapper>
+			</ThemedButton>
 		);
 	};
 
 	return (
 		<Container>
-			<IconImg src={lightbulb} alt='light' />
 			{themes.length > 0 &&
 				themes.map((theme) => (
 					<ThemeCard theme={data[theme]} key={data[theme].id} />
 				))}
-			<IconImg src={moon} alt='dark' />
 		</Container>
 	);
 }

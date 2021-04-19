@@ -4,7 +4,6 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.colors.body};
     color: ${({ theme }) => theme.colors.text};
-    // font-family: ${({ theme }) => theme.font};
     font-family: 'Open Sans', sans-serif;
     transition: all 0.50s linear;
      font-weight: ${(props) => props.weight || '400'};
@@ -30,9 +29,9 @@ export const GlobalStyles = createGlobalStyle`
     border-radius: 4px;
     margin-top: 5px;
     cursor: pointer;
-    background-color: #1064EA;
-    color: #FFFFFF;
-    font-family: ${({ theme }) => theme.font};
+    background-color: ${({ theme }) => theme.colors.button.background};
+    color: ${({ theme }) => theme.colors.button.text};
+    
   }
 
   button.btn {
