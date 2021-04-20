@@ -7,10 +7,11 @@ import NavBar from './components/NavBar';
 import Register from './features/login/screens/Register';
 import Splash from './components/Splash';
 import Home from './components/Home';
-import SignIn from './SignIn';
+import LogIn from './LogIn';
 import SignUp from './SignUp';
 import { Link } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
+import ForgotPassword from './ForgotPassword';
 
 function App() {
 	return (
@@ -22,8 +23,9 @@ function App() {
 					<Switch>
 						<Route exact path='/' component={Home} />
 						<Route path='/signup' component={SignUp} />
-						<Route path='/login' component={SignIn} />
+						<Route path='/login' component={LogIn} />
 						<Route path='/register' component={Register} />
+						<Route path='/forgot-password' component={ForgotPassword} />
 					</Switch>
 				</Router>
 			</AuthProvider>
