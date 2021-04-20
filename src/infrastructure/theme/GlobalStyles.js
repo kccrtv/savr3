@@ -38,4 +38,13 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.button.background};
     color: ${({ theme }) => theme.colors.button.text};
   }
+
+  #title{
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  #subtitle{
+    color: ${({ theme }) => theme.colors.button.text};
+        
+  }
 `;
