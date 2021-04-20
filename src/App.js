@@ -10,22 +10,23 @@ import Home from './components/Home';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { Link } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
 	return (
 		<>
 			{/* <Home /> */}
 			{/* <Register /> */}
-			<Router>
-				<Switch>
-					<Route exact path='/' component={Home} />
-					<Route path='/signup' component={SignUp} />
-					<Route path='/login' component={SignIn} />
-					<Route path='/register' component={Register} />
-				</Switch>
-
-				{/* <SignUp /> */}
-			</Router>
+			<AuthProvider>
+				<Router>
+					<Switch>
+						<Route exact path='/' component={Home} />
+						<Route path='/signup' component={SignUp} />
+						<Route path='/login' component={SignIn} />
+						<Route path='/register' component={Register} />
+					</Switch>
+				</Router>
+			</AuthProvider>
 		</>
 	);
 }
