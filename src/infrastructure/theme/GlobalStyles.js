@@ -40,11 +40,43 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   #title{
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.body};
   }
 
   #subtitle{
-    color: ${({ theme }) => theme.colors.button.text};
-        
+    color: ${({ theme }) => theme.colors.body};     
   }
+
+  #home {
+    display: grid;
+    grid-template-columns: 1fr 1fr 6fr;
+  }
+
+  .results {
+  
+   display: grid;
+   grid-template-columns: 200px 16px 200px auto;
+   grid-template-rows: repeat(4, 24px 16px 320px);
+  
+    grid-column: 1/2;
+  }
+  
+  .pagination{
+    display: grid;
+    grid-row: 1 / 2;
+    grid-column: 1 / 5;
+    margin: 8px auto;
+  }
+
+  .column-1 {
+    grid-row-start: 3;
+    grid-column-start: 1;
+    
+
+  }
+  .column-2 {
+    grid-row-start: 3;
+    grid-column-start: 2;
+  }
+
 `;

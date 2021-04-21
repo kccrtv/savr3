@@ -9,6 +9,8 @@ import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { useAuth } from '../contexts/AuthContext';
+import CustomCard from './CustomCard';
+import { Pagination } from '@material-ui/lab';
 
 const Main = styled.main`
 	margin: 0 auto;
@@ -44,13 +46,17 @@ function Home() {
 				<ThemeProvider theme={selectedTheme}>
 					<GlobalStyles />
 					<NavBar />
-					<Main>
-						<h1>Profile</h1>
+					<Main id='home'>
+						{/* <h1>Profile</h1>
 						{error && <Alert variant='error'>{error}</Alert>}
 						<h2>{currentUser.email}</h2>
 						<Link to='/update'>Update Profile</Link>
-						<Button onClick={handleLogout}>Log Out</Button>
-						<ParallaxCarousel />
+						<Button onClick={handleLogout}>Log Out</Button> */}
+						{/* <ParallaxCarousel /> */}
+						<div className='results'>
+							<Pagination className='pagination' count={3} />
+							<CustomCard />
+						</div>
 					</Main>
 				</ThemeProvider>
 			)}
