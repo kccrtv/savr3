@@ -60,33 +60,44 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function SignUp() {
+export default function UpdateProfile() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const passwordConfirmRef = useRef();
-	const { signup } = useAuth();
+	const { currentUser, updateEmail, updatePassword } = useAuth();
 	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
 	const history = useHistory();
 	const classes = useStyles();
 
-	async function handleSubmit(event) {
+	function handleSubmit(event) {
 		event.preventDefault();
 
 		if (passwordRef.current.value !== passwordConfirmRef.current.value) {
 			return setError('Passwords do not match');
 		}
 
-		try {
-			setError('');
-			setLoading(true);
-			await signup(emailRef.current.value, passwordRef.current.value);
-			history.push('/');
-		} catch {
-			setError('Failed to create an account');
+		const promises = [];
+		setLoading(true);
+		setError('');
+
+		if (emailRef.current.value !== currentUser.email) {
+			promises.push(updateEmail(emailRef.current.value));
+		}
+		if (passwordRef.current.value) {
+			promises.push(updatePassword(passwordRef.current.value));
 		}
 
-		setLoading(false);
+		Promise.all(promises)
+			.then(() => {
+				history.push('/');
+			})
+			.catch(() => {
+				setError('Failed to update profile');
+			})
+			.finally(() => {
+				setLoading(false);
+			});
 	}
 
 	return (
@@ -99,70 +110,47 @@ export default function SignUp() {
 				</Avatar> */}
 				<LogoImg src={logo} alt='savr flame' />
 				<Typography component='h1' variant='h5'>
-					Sign up
+					Update Profile
 				</Typography>
-				{/* <form className={classes.form} noValidate> */}
+
 				{error && <Alert severity='error'>{error}</Alert>}
 				<form className={classes.form} onSubmit={handleSubmit}>
 					<Grid container spacing={2}>
-						{/* <Grid item xs={12} sm={6}>
-							<TextField
-								autoComplete='fname'
-								name='firstName'
-								variant='outlined'
-								required
-								fullWidth
-								id='firstName'
-								label='First Name'
-								autoFocus
-								
-							/>
-						</Grid>
-						<Grid item xs={12} sm={6}>
-							<TextField
-								variant='outlined'
-								required
-								fullWidth
-								id='lastName'
-								label='Last Name'
-								name='lastName'
-								autoComplete='lname'
-							/>
-						</Grid> */}
 						<Grid item xs={12}>
 							<TextField
 								variant='outlined'
-								required
+								defaultValue={currentUser.email}
 								fullWidth
 								id='email'
 								label='Email Address'
 								name='email'
-								// autoComplete='hidden'
 								inputRef={emailRef}
+								// required
 							/>
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
 								variant='outlined'
-								required
+								autoFocus='true'
 								fullWidth
 								name='password'
-								label='Password'
+								label='Password (Leave blank to keep the same)'
 								type='password'
 								id='password'
-								// autoComplete='hidden'
+								placeholder='Leave blank to keep the same'
+								autoComplete='new-password'
 								inputRef={passwordRef}
 							/>
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
 								variant='outlined'
-								required
 								fullWidth
 								name='password'
-								label='Confirm Password'
+								label='Confirm Password (Leave blank to keep the same)'
 								type='password'
 								id='password-confirm'
+								placeholder='Leave blank to keep the same'
 								// autoComplete='hidden'
 								inputRef={passwordConfirmRef}
 							/>
@@ -175,12 +163,12 @@ export default function SignUp() {
 						color='primary'
 						className={classes.submit}
 						disabled={loading}>
-						Sign Up
+						Update
 					</Button>
 					<Grid container justify='flex-end'>
 						<Grid item>
-							<Link to='/login' variant='body2'>
-								Already have an account? Log in
+							<Link to='/' variant='body2'>
+								Cancel
 							</Link>
 						</Grid>
 					</Grid>

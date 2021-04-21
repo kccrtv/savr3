@@ -12,6 +12,9 @@ import SignUp from './SignUp';
 import { Link } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import ForgotPassword from './ForgotPassword';
+import UpdateProfile from './UpdateProfile';
+import { Update } from '@material-ui/icons';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
 	return (
@@ -21,11 +24,13 @@ function App() {
 			<AuthProvider>
 				<Router>
 					<Switch>
-						<Route exact path='/' component={Home} />
+						{/* <Route exact path='/' component={Home} /> */}
+						<PrivateRoute exact path='/' component={Home} />
 						<Route path='/signup' component={SignUp} />
 						<Route path='/login' component={LogIn} />
 						<Route path='/register' component={Register} />
 						<Route path='/forgot-password' component={ForgotPassword} />
+						<Route path='/update' component={UpdateProfile} />
 					</Switch>
 				</Router>
 			</AuthProvider>
