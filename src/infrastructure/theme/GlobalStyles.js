@@ -21,6 +21,10 @@ export const GlobalStyles = createGlobalStyle`
     cursor: pointer;
   }
 
+  a.menu{
+    text-decoration: none;
+  }
+
   button {
     border: 0;
     display: inline-block;
@@ -49,7 +53,7 @@ export const GlobalStyles = createGlobalStyle`
 
   #home {
     display: grid;
-    grid-template-columns: 1fr 1fr 6fr;
+    grid-template-columns: 1fr 3fr 1fr;
   }
 
   .results {

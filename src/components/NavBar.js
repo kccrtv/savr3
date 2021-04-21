@@ -1,20 +1,31 @@
 // 1: Import
 import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '../infrastructure/theme/GlobalStyles';
 import { useTheme } from '../infrastructure/theme/useTheme';
 import ThemeSelector from '../infrastructure/theme/ThemeSelector';
 import flame from '../assets/fire.svg';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Fade from '@material-ui/core/Fade';
+import {
+	AppBar,
+	Toolbar,
+	InputBase,
+	Menu,
+	MenuItem,
+	Fade,
+	Button,
+} from '@material-ui/core';
+import { Alert, Pagination } from '@material-ui/lab';
+// import Toolbar from '@material-ui/core/Toolbar';
+// import InputBase from '@material-ui/core/InputBase';
+// import Menu from '@material-ui/core/Menu';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import Fade from '@material-ui/core/Fade';
+// import { Button } from '@material-ui/core';
 
 const Logo = styled.div`
 	display: inline-block;
@@ -93,7 +104,20 @@ const useStyles = makeStyles((theme) => ({
 function NavBar(props) {
 	const { theme, themeLoaded, getIcons } = useTheme();
 	const [selectedTheme, setSelectedTheme] = useState(theme);
+	const [error, setError] = useState('');
+	const { currentUser, logout } = useAuth();
+	const history = useHistory();
 
+	async function handleLogout() {
+		setError('');
+		setAnchorEl(null);
+		try {
+			await logout();
+			history.push('/login');
+		} catch {
+			setError('Failed to log out');
+		}
+	}
 	useEffect(() => {
 		setSelectedTheme(theme);
 	}, [themeLoaded]);
@@ -152,9 +176,21 @@ function NavBar(props) {
 								<MenuItem onClick={handleClose}>
 									<ThemeSelector setter={setSelectedTheme} />
 								</MenuItem>
-								<MenuItem onClick={handleClose}>Profile</MenuItem>
-								<MenuItem onClick={handleClose}>My account</MenuItem>
-								<MenuItem onClick={handleClose}>Logout</MenuItem>
+								<MenuItem onClick={handleClose}>
+									<Link className='menu' to='/'>
+										Favorites
+									</Link>
+								</MenuItem>
+								<MenuItem onClick={handleClose}>
+									<Link className='menu' to='/update'>
+										Update Profile
+									</Link>
+								</MenuItem>
+								<MenuItem onClick={handleLogout}>
+									<Link to='/login' className='menu'>
+										Logout
+									</Link>
+								</MenuItem>
 							</Menu>
 						</Toolbar>
 					</AppBar>

@@ -11,7 +11,7 @@ import {
 	CardContent,
 	CardMedia,
 } from '@material-ui/core';
-
+import Fave from '../features/Fave';
 // import NoSsr from '@material-ui/core/NoSsr';
 // import Grid from '@material-ui/core/Grid';
 // import Typography from '@material-ui/core/Typography';
@@ -20,6 +20,7 @@ import {
 // import CardContent from '@material-ui/core/CardContent';
 // import CardMedia from '@material-ui/core/CardMedia';
 import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree';
+import { useFave } from '../contexts/FaveContext';
 
 const useGridStyles = makeStyles(({ breakpoints }) => ({
 	root: {
@@ -74,9 +75,13 @@ const useStyles = makeStyles(() => ({
 }));
 
 const CustomCard = ({ classes, image, title, subtitle }) => {
+	const { faves } = useFave();
+
+	console.log(faves);
 	const mediaStyles = useFourThreeCardMediaStyles();
 	return (
 		<CardActionArea className={classes.actionArea}>
+			<Fave />
 			<Card className={classes.card}>
 				<CardMedia classes={mediaStyles} image={image} />
 				<CardContent className={classes.content}>
