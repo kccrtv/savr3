@@ -1,12 +1,12 @@
 // 1: Import
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../../infrastructure/contexts/AuthContext';
 import styled, { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from '../infrastructure/theme/GlobalStyles';
-import { useTheme } from '../infrastructure/theme/useTheme';
-import ThemeSelector from '../infrastructure/theme/ThemeSelector';
-import flame from '../assets/fire.svg';
+import { GlobalStyles } from '../../../infrastructure/theme/components/GlobalStyles';
+import { useTheme } from '../../../infrastructure/theme/components/useTheme';
+import ThemeSelector from '../../../infrastructure/theme/screens/ThemeSelector';
+import flame from '../../../assets/fire.svg';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -20,12 +20,6 @@ import {
 	Button,
 } from '@material-ui/core';
 import { Alert, Pagination } from '@material-ui/lab';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import InputBase from '@material-ui/core/InputBase';
-// import Menu from '@material-ui/core/Menu';
-// import MenuItem from '@material-ui/core/MenuItem';
-// import Fade from '@material-ui/core/Fade';
-// import { Button } from '@material-ui/core';
 
 const Logo = styled.div`
 	display: inline-block;

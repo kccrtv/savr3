@@ -1,6 +1,10 @@
 import React from 'react';
-import { LogoButton, LogoDiv, SplashBG } from '../infrastructure/theme/theme';
-import logo from '../assets/logo-lg.svg';
+import {
+	LogoButton,
+	LogoDiv,
+	SplashBG,
+} from '../../../infrastructure/theme/components/theme';
+import logo from '../../../assets/logo-lg.svg';
 
 export default function Splash(props) {
 	return (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { setToLS, getFromLS } from '../../utils/storage';
+import { setToLS, getFromLS } from '../../../utils/storage';
 import _ from 'lodash';
 
 export const useTheme = () => {

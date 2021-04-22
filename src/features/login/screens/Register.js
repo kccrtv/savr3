@@ -4,8 +4,8 @@ import {
 	SplashBG,
 	GlobalStyle,
 	LogoImg,
-} from '../../../infrastructure/theme/theme';
-import ControlledLottie from '../../../components/ControlledLottie';
+} from '../../../infrastructure/theme/components/theme.js';
+import ControlledLottie from '../../../features/dashboard/components/ControlledLottie';
 import logo from '../../../assets/logo-lg.svg';
 
 function Register() {

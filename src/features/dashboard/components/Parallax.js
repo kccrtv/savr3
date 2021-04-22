@@ -1,15 +1,14 @@
 import React from 'react';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import { Typography, Button } from '@material-ui/core';
+// import Button from '@material-ui/core/Button';
+import { KeyboardArrowRight, KeyboardArrowLeft } from '@material-ui/icons';
 import ParallaxSlide from '@mui-treasury/components/slide/parallax';
 import DotIndicator from '@mui-treasury/components/indicator/dot';
 import { useArrowDarkButtonStyles } from '@mui-treasury/styles/button/arrowDark';
 import { Link } from 'react-router-dom';
-import mealData from '../services/mock.json';
+// import mealData from '../services/mock.json';
 
 const data = [
 	{

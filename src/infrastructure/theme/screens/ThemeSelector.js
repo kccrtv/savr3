@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import _, { lastIndexOf } from 'lodash';
-import { useTheme } from './useTheme';
-import { getFromLS } from '../../utils/storage';
+import { useTheme } from '../components/useTheme';
+import { getFromLS } from '../../../utils/storage';
 import theme from 'styled-theming';
 
 const Container = styled.div`

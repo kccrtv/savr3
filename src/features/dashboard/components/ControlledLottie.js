@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Lottie from 'react-lottie';
-import animationData from '../assets/cooking.json';
+import animationData from '../../../assets/cooking.json';
 import styled from 'styled-components';
 import StopIcon from '@material-ui/icons/Stop';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
-import { GlobalStyle } from '../infrastructure/theme/theme';
+import { GlobalStyle } from '../../../infrastructure/theme/components/theme';
 
 const ControlledDiv = styled.div`
 	align-items: center;

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useAuth } from './contexts/AuthContext';
+import { useAuth } from '../../../infrastructure/contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import {
 	Button,
@@ -12,8 +12,11 @@ import {
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
-import { GlobalStyle, LogoImg } from './infrastructure/theme/theme';
-import logo from './assets/logo-lg.svg';
+import {
+	GlobalStyle,
+	LogoImg,
+} from '../../../infrastructure/theme/components/theme';
+import logo from '../../../assets/logo-lg.svg';
 
 function Copyright() {
 	return (

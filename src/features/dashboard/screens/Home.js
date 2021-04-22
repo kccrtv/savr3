@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from '../infrastructure/theme/GlobalStyles';
-import { useTheme } from '../infrastructure/theme/useTheme';
+import { GlobalStyles } from '../../../infrastructure/theme/components/GlobalStyles';
+import { useTheme } from '../../../infrastructure/theme/components/useTheme';
 import NavBar from '../components/NavBar';
-import ParallaxCarousel from './Parallax';
 import { Button } from '@material-ui/core';
 import { Alert, Pagination } from '@material-ui/lab';
-import { useAuth } from '../contexts/AuthContext';
-import CustomCard from './CustomCard';
+import { useAuth } from '../../../infrastructure/contexts/AuthContext';
+import CustomCard from '../../../features/search/components/CustomCard';
+const key = process.env.REACT_APP_API_KEY;
 
 const Main = styled.main`
 	margin: 0 auto;
@@ -20,8 +20,19 @@ function Home() {
 	const { theme, themeLoaded } = useTheme();
 	const [selectedTheme, setSelectedTheme] = useState(theme);
 
+	let query = 'pizza';
+	const searchUrl = ` https://forkify-api.herokuapp.com/api/v2/recipes?search=${query}&key=${key}`;
+
+	function searchRecipes() {
+		return fetch(searchUrl)
+			.then((res) => res.json())
+			.then((res) => console.log(res.data))
+			.catch((err) => console.log(err));
+	}
+
 	useEffect(() => {
 		setSelectedTheme(theme);
+		// searchRecipes();
 	}, [themeLoaded]);
 
 	return (
@@ -43,6 +54,7 @@ function Home() {
 						</div>
 						<div>
 							<h1>Recipe</h1>
+
 							<img
 								width={'10%'}
 								src='https://www.themealdb.com/images/media/meals/yypwwq1511304979.jpg'

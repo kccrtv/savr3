@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import splash from '../../assets/splash.png';
+import splash from '../../../assets/splash.png';
 
 export const GlobalStyle = createGlobalStyle`
 	* {

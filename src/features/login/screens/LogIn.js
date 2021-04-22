@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useAuth } from './contexts/AuthContext';
+import { useAuth } from '../../../infrastructure/contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import {
 	Button,
@@ -12,21 +12,11 @@ import {
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
-import { GlobalStyle, LogoImg } from './infrastructure/theme/theme';
-import logo from './assets/logo-lg.svg';
-// import Avatar from '@material-ui/core/Avatar';
-// import Button from '@material-ui/core/Button';
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// import TextField from '@material-ui/core/TextField';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
-// import Grid from '@material-ui/core/Grid';
-// import Box from '@material-ui/core/Box';
-// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-// import Typography from '@material-ui/core/Typography';
-// import Container from '@material-ui/core/Container';
-// import { Link } from 'react-router-dom';
+import {
+	GlobalStyle,
+	LogoImg,
+} from '../../../infrastructure/theme/components/theme';
+import logo from '../../../assets/logo-lg.svg';
 
 function Copyright() {
 	return (
@@ -53,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: theme.palette.secondary.main,
 	},
 	form: {
-		width: '100%', // Fix IE 11 issue.
+		width: '100%',
 		marginTop: theme.spacing(1),
 	},
 	submit: {
@@ -89,9 +79,6 @@ export default function LogIn() {
 			<GlobalStyle />
 			<CssBaseline />
 			<div className={classes.paper}>
-				{/* <Avatar className={classes.avatar}>
-					<LockOutlinedIcon />
-				</Avatar> */}
 				<LogoImg src={logo} alt='savr flame' />
 				<Typography component='h1' variant='h5'>
 					Sign in
@@ -119,7 +106,6 @@ export default function LogIn() {
 						label='Password'
 						type='password'
 						id='password'
-						// autoComplete='current-password'
 						inputRef={passwordRef}
 					/>
 					{/* <FormControlLabel

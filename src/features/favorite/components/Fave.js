@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { useFave } from '../contexts/FaveContext';
+import { useFave } from '../../../infrastructure/contexts/FaveContext';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import styled from 'styled-components';
-import { GlobalStyles } from '../infrastructure/theme/GlobalStyles';
+import { GlobalStyles } from '../../../infrastructure/theme/components/GlobalStyles';
 
 const FaveButton = styled.button`
 	&:hover {

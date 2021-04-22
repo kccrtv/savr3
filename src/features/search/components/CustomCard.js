@@ -11,16 +11,9 @@ import {
 	CardContent,
 	CardMedia,
 } from '@material-ui/core';
-import Fave from '../features/Fave';
-// import NoSsr from '@material-ui/core/NoSsr';
-// import Grid from '@material-ui/core/Grid';
-// import Typography from '@material-ui/core/Typography';
-// import CardActionArea from '@material-ui/core/CardActionArea';
-// import Card from '@material-ui/core/Card';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardMedia from '@material-ui/core/CardMedia';
+import Fave from '../../../features/favorite/components/Fave.js';
 import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree';
-import { useFave } from '../contexts/FaveContext';
+import { useFave } from '../../../infrastructure/contexts/FaveContext';
 
 const useGridStyles = makeStyles(({ breakpoints }) => ({
 	root: {
