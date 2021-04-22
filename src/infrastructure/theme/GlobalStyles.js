@@ -57,12 +57,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .results {
-  
    display: grid;
    grid-template-columns: 200px 16px 200px auto;
    grid-template-rows: repeat(4, 24px 16px 320px);
-  
-    grid-column: 1/2;
+   grid-column: 1/2;
   }
   
   .pagination{
@@ -75,12 +73,22 @@ export const GlobalStyles = createGlobalStyle`
   .column-1 {
     grid-row-start: 3;
     grid-column-start: 1;
-    
-
   }
+
   .column-2 {
     grid-row-start: 3;
     grid-column-start: 2;
+  }
+
+  .heart {
+    color: ${({ theme }) => theme.colors.button.text};
+    border: none;
+	background-color: transparent;
+	float: right;
+  padding: 0;
+  margin: 0;
+
+  opacity: 0.8;
   }
 
 `;

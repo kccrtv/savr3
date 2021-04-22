@@ -77,14 +77,14 @@ const useStyles = makeStyles(() => ({
 const CustomCard = ({ classes, image, title, subtitle }) => {
 	const { faves } = useFave();
 
-	console.log(faves);
 	const mediaStyles = useFourThreeCardMediaStyles();
 	return (
 		<CardActionArea className={classes.actionArea}>
-			<Fave />
 			<Card className={classes.card}>
 				<CardMedia classes={mediaStyles} image={image} />
 				<CardContent className={classes.content}>
+					{console.log(faves)}
+					<Fave />
 					<Typography id='title' className={classes.title} variant={'h2'}>
 						{title}
 					</Typography>

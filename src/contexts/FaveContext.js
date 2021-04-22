@@ -16,9 +16,10 @@ export function FaveContextProvider({ children }) {
 
 	function removeFave(recipe) {
 		const newFaves = faves.filter(function (x) {
-			if (x.idMeal !== recipe.idMeal) {
-				return x.idMeal;
-			}
+			// if (x.idMeal !== recipe.idMeal) {
+			// 	return x.idMeal;
+			// }
+			console.log(x);
 		});
 		return setFaves(newFaves);
 	}
