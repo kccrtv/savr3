@@ -19,6 +19,13 @@ export const GlobalStyles = createGlobalStyle`
     background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(251,201,114,0.34217436974789917) 100%);
   }
 
+  span {
+    
+    font-family: 'Berkshire Swash', cursive;
+    // color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.body};
+  }
+
    h1, h2, h3, h4, h5, h6 {
     font-family: 'Berkshire Swash', cursive;
   }
@@ -42,7 +49,8 @@ export const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     background-color: ${({ theme }) => theme.colors.button.background};
     color: ${({ theme }) => theme.colors.button.text};
-    
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
   }
 
   button.btn {

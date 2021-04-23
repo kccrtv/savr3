@@ -28,7 +28,7 @@ function Home() {
 	useEffect(() => {
 		setSelectedTheme(theme);
 		// searchRecipes();
-	}, [themeLoaded]);
+	});
 
 	return (
 		<>

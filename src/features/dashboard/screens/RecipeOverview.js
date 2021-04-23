@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import TimerIcon from '@material-ui/icons/Timer';
+import { Timer } from '@material-ui/icons';
+import GroupIcon from '@material-ui/icons/Group';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const RecipeDiv = styled.div`
 	max-height: 95vh;
@@ -13,6 +18,9 @@ const RecipeFigure = styled.figure`
 	transform: scale(1.04) translateY(-1px);
 	// transform-origin: top;
 	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 
 const RecipeTitle = styled.h1`
@@ -22,29 +30,40 @@ const RecipeTitle = styled.h1`
 	transform: translate(-50%, 20%) skewY(-6deg);
 	color: #fff;
 	font-weight: 700;
-	font-size: 2.75rem;
-	// text-transform: uppercase;
-	width: 70%;
+	font-size: 2.65rem;
+	// width: 70%;
 	line-height: 1.95;
 	text-align: center;
 `;
 
 const RecipeSpan = styled.span`
-	padding: 1.3rem 2rem;
-	background-image: linear-gradient(to right bottom, #4a927d, #fffbe6);
+	padding: 1.3rem 1rem;
+	background-image: linear-gradient(to right bottom, #356859, #fffbe6);
+`;
+
+const RecipeP = styled.p`
+	padding: 4px;
+	font-size: 1.2rem;
 `;
 
 const RecipeImg = styled.img`
 	border-radius: 16px;
-	width: 70%;
-	// width: 100%;
+	width: 80%;
+`;
+
+const ServingsButton = styled.button`
+	border-radius: 50%;
+	width: 2.2rem;
+	font-weight: 700;
+	padding: 8px;
+	margin: 4px 2px;
 `;
 
 const DetailsDiv = styled.div`
 	display: flex;
 	align-items: center;
 	// padding: 8rem 3rem 3rem 3rem;
-	padding: 3rem 1rem;
+	padding: 6rem 1rem 1rem 1rem;
 `;
 
 const InfoDiv = styled.div`
@@ -54,25 +73,54 @@ const InfoDiv = styled.div`
 	align-items: center;
 
 	&:not(:last-child) {
-		margin-right: 4rem;
+		margin: 16px;
 	}
 `;
 
+// const BodySpan = styled.span`
+// 	font-family: 'Open Sans', sans-serif;
+// `;
+
+const HeartButton = styled.button`
+	// font-size: 2rem;
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	opacity: 0.8;
+`;
+
 const IngredientsDiv = styled.div`
-	// padding: 4rem 5rem;
+	padding: 4rem 5rem;
 	font-size: 1.5rem;
 	line-height: 1.4;
 	background-color: #f2efee;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	border-radius: 16px;
+`;
+
+const IngredientsUl = styled.ul`
+	list-style: none;
+	padding: 4px;
+
+	& li {
+		padding: 8px;
+	}
 `;
 
 const DirectionsDiv = styled.div`
-	// padding: 4rem;
+	padding: 4rem 5rem;
 	// padding-bottom: 5rem;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+`;
+
+const AddButton = styled.button`
+	display: flex;
+	justify-content: center;
 	align-items: center;
 `;
 
@@ -88,31 +136,42 @@ function RecipeOverview(props) {
 					src='http://forkify-api.herokuapp.com/images/Strawberry2BBalsamic2BPizza2Bwith2BChicken252C2BSweet2BOnion2Band2BSmoked2BBacon2B5002B300939d125e2.jpg'
 					alt='recipe'
 				/>
+				<HeartButton>
+					<FavoriteBorderIcon />
+				</HeartButton>
 			</RecipeFigure>
 			<DetailsDiv>
 				<InfoDiv>
-					<svg>svg</svg>
-					<span>60</span>
-					<span>minutes</span>
+					<TimerIcon /> <RecipeP>60</RecipeP>
+					<RecipeP>minutes</RecipeP>
 				</InfoDiv>
 				<InfoDiv>
-					<svg>icon</svg>
-					<span>4</span>
-					<span>servings</span>
+					<GroupIcon />
+					<RecipeP>4</RecipeP>
+					<RecipeP>servings</RecipeP>
 					<div>
-						<button>-</button>
-						<button>+</button>
+						<ServingsButton>-</ServingsButton>
+						<ServingsButton>+</ServingsButton>
 					</div>
 				</InfoDiv>
 			</DetailsDiv>
 			<IngredientsDiv>
-				<ul>list</ul>
-				<button>add</button>
+				<h3>Ingredients</h3>
+				<IngredientsUl>
+					<li>thing</li>
+					<li>thing</li>
+					<li>thing</li>
+					<li>thing</li>
+				</IngredientsUl>
+				<AddButton>
+					<ShoppingCartIcon />
+					Add to your list
+				</AddButton>
 			</IngredientsDiv>
 
 			<DirectionsDiv>
 				<h2>How to cook</h2>
-				<p>Recipe link found here</p>
+				<RecipeP>Recipe link found here</RecipeP>
 			</DirectionsDiv>
 		</RecipeDiv>
 	);

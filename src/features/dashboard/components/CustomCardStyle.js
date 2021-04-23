@@ -11,6 +11,7 @@ import {
 import Fave from '../../../features/favorite/components/Fave.js';
 import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree';
 import { useFave } from '../../../infrastructure/contexts/FaveContext';
+import { MicNone } from '@material-ui/icons';
 
 export const useStyles = makeStyles(() => ({
 	actionArea: {
@@ -45,6 +46,7 @@ export const useStyles = makeStyles(() => ({
 		fontFamily: 'Berkshire Swash, cursive',
 		fontSize: '1.2rem',
 		// color: '#fff',
+		textTransform: 'none',
 	},
 	// subtitle: {
 	// 	fontFamily: 'Open Sans, sans-serif',
