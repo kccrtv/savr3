@@ -167,12 +167,12 @@ export const RecipeFigure = styled.figure`
 export const RecipeTitle = styled.h1`
 	position: absolute;
 	bottom: 0;
-	left: 50%;
+	left: 48%;
 	transform: translate(-50%, 20%) skewY(-6deg);
 	color: #fff;
 	font-weight: 700;
-	font-size: 2.65rem;
-	// width: 70%;
+	font-size: 1.65rem;
+	width: 90%;
 	line-height: 1.95;
 	text-align: center;
 `;
@@ -186,7 +186,7 @@ export const RecipeP = styled.p`
 `;
 export const RecipeImg = styled.img`
 	border-radius: 16px;
-	width: 80%;
+	width: 94%;
 `;
 export const ServingsButton = styled.button`
 	border-radius: 50%;

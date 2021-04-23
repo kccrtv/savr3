@@ -26,25 +26,22 @@ function RecipeOverview(props) {
 		<RecipeDiv>
 			<RecipeFigure>
 				<RecipeTitle>
-					<RecipeSpan>Recipe</RecipeSpan>
+					<RecipeSpan>{props.title}</RecipeSpan>
 				</RecipeTitle>
 
-				<RecipeImg
-					src='http://forkify-api.herokuapp.com/images/Strawberry2BBalsamic2BPizza2Bwith2BChicken252C2BSweet2BOnion2Band2BSmoked2BBacon2B5002B300939d125e2.jpg'
-					alt='recipe'
-				/>
+				<RecipeImg src={props.image} alt='recipe' />
 				<HeartButton>
 					<FavoriteBorderIcon />
 				</HeartButton>
 			</RecipeFigure>
 			<DetailsDiv>
 				<InfoDiv>
-					<TimerIcon /> <RecipeP>60</RecipeP>
+					<TimerIcon /> <RecipeP>{props.cookingTime}</RecipeP>
 					<RecipeP>minutes</RecipeP>
 				</InfoDiv>
 				<InfoDiv>
 					<GroupIcon />
-					<RecipeP>4</RecipeP>
+					<RecipeP>{props.servings}</RecipeP>
 					<RecipeP>servings</RecipeP>
 					<div>
 						<ServingsButton>-</ServingsButton>
@@ -55,6 +52,7 @@ function RecipeOverview(props) {
 			<IngredientsDiv>
 				<h3>Ingredients</h3>
 				<IngredientsUl>
+					<p>{props.ingredients}</p>
 					<li>thing</li>
 					<li>thing</li>
 					<li>thing</li>
@@ -68,7 +66,10 @@ function RecipeOverview(props) {
 
 			<DirectionsDiv>
 				<h2>How to cook</h2>
-				<RecipeP>Recipe link found here</RecipeP>
+				<RecipeP>
+					Recipe link found here<span>{props.publisher}</span>
+				</RecipeP>
+				<a>{props.sourceUrl}</a>
 			</DirectionsDiv>
 		</RecipeDiv>
 	);

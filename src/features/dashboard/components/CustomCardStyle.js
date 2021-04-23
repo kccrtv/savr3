@@ -68,7 +68,7 @@ const CustomCardStyle = ({ classes, image, title, subtitle }) => {
 			<Card className={classes.card}>
 				<CardMedia classes={mediaStyles} image={image} />
 				<CardContent className={classes.content}>
-					{console.log(faves)}
+					{/* {console.log(faves)} */}
 					<Fave />
 					<Typography id='title' className={classes.title} variant={'h3'}>
 						{title}
