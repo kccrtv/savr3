@@ -17,11 +17,15 @@ import {
 	HeartButton,
 	IngredientsDiv,
 	IngredientsUl,
+	IngredientsLi,
 	DirectionsDiv,
 	AddButton,
 } from '../../../infrastructure/theme/components/GlobalStyles';
 
 function RecipeOverview(props) {
+	let ingredientsArray = props.ingredients;
+	// console.log('ia0', ingredientsArray[0]);
+
 	return (
 		<RecipeDiv>
 			<RecipeFigure>
@@ -29,10 +33,13 @@ function RecipeOverview(props) {
 					<RecipeSpan>{props.title}</RecipeSpan>
 				</RecipeTitle>
 
+				{/* <RecipeImg image={props.image}> */}
 				<RecipeImg src={props.image} alt='recipe' />
-				<HeartButton>
+				{/* </RecipeImg> */}
+
+				{/* <HeartButton>
 					<FavoriteBorderIcon />
-				</HeartButton>
+				</HeartButton> */}
 			</RecipeFigure>
 			<DetailsDiv>
 				<InfoDiv>
@@ -43,33 +50,28 @@ function RecipeOverview(props) {
 					<GroupIcon />
 					<RecipeP>{props.servings}</RecipeP>
 					<RecipeP>servings</RecipeP>
-					<div>
+					<>
 						<ServingsButton>-</ServingsButton>
 						<ServingsButton>+</ServingsButton>
-					</div>
+					</>
 				</InfoDiv>
 			</DetailsDiv>
 			<IngredientsDiv>
 				<h3>Ingredients</h3>
 				<IngredientsUl>
-					<p>{props.ingredients}</p>
-					<li>thing</li>
-					<li>thing</li>
-					<li>thing</li>
-					<li>thing</li>
+					{ingredientsArray &&
+						ingredientsArray[0].forEach((ing) => {
+							return <IngredientsLi>{ing}</IngredientsLi>;
+						})}
 				</IngredientsUl>
-				{/* <AddButton>
-					<ShoppingCartIcon />
-					Add to your list
-				</AddButton> */}
 			</IngredientsDiv>
 
 			<DirectionsDiv>
-				<h2>How to cook</h2>
+				<h2>Steps</h2>
 				<RecipeP>
-					Recipe link found here<span>{props.publisher}</span>
+					Find the recipe details at:{' '}
+					<a href={props.sourceUrl}>{props.publisher}</a>
 				</RecipeP>
-				<a>{props.sourceUrl}</a>
 			</DirectionsDiv>
 		</RecipeDiv>
 	);

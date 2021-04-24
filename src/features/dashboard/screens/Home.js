@@ -5,7 +5,7 @@ import { GlobalStyles } from '../../../infrastructure/theme/components/GlobalSty
 import { useTheme } from '../../../infrastructure/theme/components/useTheme';
 import NavBar from '../components/NavBar';
 import { useAuth } from '../../../infrastructure/contexts/AuthContext';
-
+import SimplePopover from '../components/SimplePopover';
 import RecipeOverview from './RecipeOverview';
 import Community from './Community';
 import Results from './Results';
@@ -16,29 +16,26 @@ function Home() {
 	const [selectedTheme, setSelectedTheme] = useState(theme);
 	const [error, setError] = useState('');
 	const [recipe, setRecipe] = useState();
-	// let query = 'pizza';
-	// const searchUrl = ` https://forkify-api.herokuapp.com/api/v2/recipes?search=${query}&key=${key}`;
-
-	// function searchRecipes() {
-	// 	return fetch(
-	// 		`https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886?key=${key}`
-	// 	)
-	// 		.then((res) => res.json())
-	// 		.then((res) => {
-	// 			console.log(res.data);
-	// 			console.log('test');
-	// 		})
-	// 		.catch((err) => console.log(err));
-	// }
+	const [ingredients, setIngredients] = useState([]);
 
 	async function showRecipe() {
 		try {
 			await fetch(
-				`https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886?key=${key}`
+				`https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc890?key=${key}`
 			)
 				.then((res) => res.json())
 				.then((res) => {
 					let recipe = res.data.recipe;
+					let ingredientsObject = recipe.ingredients;
+
+					const ingredientsArray = ingredientsObject.map((item) => {
+						let quantity = item.quantity;
+						let unit = item.unit;
+						let description = item.description;
+						return `${quantity} ${unit} ${description}`;
+					});
+
+					setIngredients(ingredientsArray);
 
 					recipe = {
 						id: recipe.id,
@@ -48,9 +45,9 @@ function Home() {
 						image: recipe.image_url,
 						servings: recipe.servings,
 						cookingTime: recipe.cooking_time,
-						ingredients: recipe.ingredients,
+						ingredients: [ingredients],
 					};
-					console.log(recipe.ingredients);
+
 					setRecipe(recipe);
 				});
 		} catch {
@@ -60,9 +57,7 @@ function Home() {
 
 	useEffect(() => {
 		setSelectedTheme(theme);
-		// searchRecipes();
-		showRecipe();
-		console.log(recipe);
+		// showRecipe();
 	}, []);
 
 	return (
@@ -72,26 +67,20 @@ function Home() {
 					<GlobalStyles />
 					<NavBar />
 					<main id='home'>
-						{/* <h1>Profile</h1>
-						{error && <Alert variant='error'>{error}</Alert>}
-						<h2>{currentUser.email}</h2>
-						<Link to='/update'>Update Profile</Link>
-						<Button onClick={handleLogout}>Log Out</Button> */}
-						{/* <ParallaxCarousel /> */}
 						<Results />
 						{recipe ? (
 							<RecipeOverview
-								// key={recipe.id}
+								key={recipe.id}
 								title={recipe.title}
 								publisher={recipe.publisher}
 								sourceUrl={recipe.sourceUrl}
 								image={recipe.image}
 								servings={recipe.servings}
 								cookingTime={recipe.cookingTime}
-								ingredients={recipe.ingredients[0].quantity}
+								ingredients={recipe.ingredients}
 							/>
 						) : null}
-						<Community />
+						{/* <Community /> */}
 					</main>
 				</ThemeProvider>
 			)}

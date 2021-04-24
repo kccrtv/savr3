@@ -157,6 +157,7 @@ export default function SignUp() {
 						disabled={loading}>
 						Sign Up
 					</Button>
+
 					<Grid container justify='flex-end'>
 						<Grid item>
 							<Link to='/login' variant='body2'>

@@ -18,8 +18,23 @@ import {
 	MenuItem,
 	Fade,
 	Button,
+	Popover,
+	Typography,
 } from '@material-ui/core';
 import { Alert, Pagination } from '@material-ui/lab';
+
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+import 'firebase/analytics';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { app } from '../../../features/login/components/firebase';
+import SimplePopover from './SimplePopover';
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+const analytics = firebase.analytics();
 
 const Logo = styled.div`
 	display: inline-block;
@@ -93,6 +108,12 @@ const useStyles = makeStyles((theme) => ({
 			},
 		},
 	},
+	popover: {
+		pointerEvents: 'none',
+	},
+	paper: {
+		padding: theme.spacing(1),
+	},
 }));
 
 function NavBar(props) {
@@ -101,6 +122,9 @@ function NavBar(props) {
 	const [error, setError] = useState('');
 	const { currentUser, logout } = useAuth();
 	const history = useHistory();
+	const classes = useStyles();
+	const [anchorEl, setAnchorEl] = useState(null);
+	const open = Boolean(anchorEl);
 
 	async function handleLogout() {
 		setError('');
@@ -112,13 +136,10 @@ function NavBar(props) {
 			setError('Failed to log out');
 		}
 	}
+
 	useEffect(() => {
 		setSelectedTheme(theme);
 	}, [themeLoaded]);
-
-	const classes = useStyles();
-	const [anchorEl, setAnchorEl] = useState(null);
-	const open = Boolean(anchorEl);
 
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
@@ -140,6 +161,7 @@ function NavBar(props) {
 								<Flame src={flame} alt='flame' />
 								<Savr>Savr</Savr>
 							</Logo>
+							<SimplePopover />
 							<div className={classes.search}>
 								<div className={classes.searchIcon}>
 									<SearchIcon />
@@ -150,14 +172,14 @@ function NavBar(props) {
 										root: classes.inputRoot,
 										input: classes.inputInput,
 									}}
-									inputProps={{ 'aria-label': 'search' }}
-								/>
+									inputProps={{ 'aria-label': 'search' }}></InputBase>
 							</div>
 
 							<Button
 								aria-controls='fade-menu'
 								aria-haspopup='true'
-								onClick={handleClick}>
+								onClick={handleClick}
+								className='btn'>
 								<MenuIcon />
 							</Button>
 							<Menu
@@ -170,17 +192,13 @@ function NavBar(props) {
 								<MenuItem onClick={handleClose}>
 									<ThemeSelector setter={setSelectedTheme} />
 								</MenuItem>
-								<MenuItem onClick={handleClose}>
-									<Link className='menu' to='/'>
-										Favorites
-									</Link>
-								</MenuItem>
+
 								<MenuItem onClick={handleClose}>
 									<Link className='menu' to='/update'>
 										Update Profile
 									</Link>
 								</MenuItem>
-								<MenuItem onClick={handleLogout}>
+								<MenuItem onClick={() => auth.signOut()}>
 									<Link to='/login' className='menu'>
 										Logout
 									</Link>

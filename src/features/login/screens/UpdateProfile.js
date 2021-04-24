@@ -15,14 +15,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
 	GlobalStyle,
 	LogoImg,
+	LogoButton,
 } from '../../../infrastructure/theme/components/theme';
 import logo from '../../../assets/logo-lg.svg';
+import { GlobalStyles } from '../../../infrastructure/theme/components/GlobalStyles';
+import NavBar from '../../dashboard/components/NavBar';
 
 function Copyright() {
 	return (
 		<Typography variant='body2' color='textSecondary' align='center'>
 			{'Copyright © '}
-			<Link color='inherit' to='/register'>
+			<Link color='inherit' to='/welcome'>
 				Savr 3.0
 			</Link>{' '}
 			{new Date().getFullYear()}
@@ -96,13 +99,12 @@ export default function UpdateProfile() {
 			<GlobalStyle />
 			<CssBaseline />
 			<div className={classes.paper}>
-				{/* <Avatar className={classes.avatar}>
-					<LockOutlinedIcon />
-				</Avatar> */}
-				<LogoImg src={logo} alt='savr flame' />
-				<Typography component='h1' variant='h5'>
-					Update Profile
-				</Typography>
+				<LogoButton>
+					<Link to='/welcome'>
+						<LogoImg className='medium-logo' src={logo} alt='savr flame' />
+					</Link>
+				</LogoButton>
+				<h1>Update Profile</h1>
 
 				{error && <Alert severity='error'>{error}</Alert>}
 				<form className={classes.form} onSubmit={handleSubmit}>
@@ -151,7 +153,7 @@ export default function UpdateProfile() {
 						type='submit'
 						fullWidth
 						variant='contained'
-						color='primary'
+						color='default'
 						className={classes.submit}
 						disabled={loading}>
 						Update

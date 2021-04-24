@@ -15,6 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
 	GlobalStyle,
 	LogoImg,
+	LogoButton,
 } from '../../../infrastructure/theme/components/theme';
 import logo from '../../../assets/logo-lg.svg';
 
@@ -22,7 +23,7 @@ function Copyright() {
 	return (
 		<Typography variant='body2' color='textSecondary' align='center'>
 			{'Copyright © '}
-			<Link color='inherit' to='/register'>
+			<Link color='inherit' to='/welcome'>
 				Savr 3.0
 			</Link>{' '}
 			{new Date().getFullYear()}
@@ -78,12 +79,15 @@ export default function ForgotPassword() {
 	return (
 		<Container component='main' maxWidth='xs'>
 			<GlobalStyle />
+
 			<CssBaseline />
 			<div className={classes.paper}>
-				<LogoImg src={logo} alt='savr flame' />
-				<Typography component='h1' variant='h5'>
-					Password Reset
-				</Typography>
+				<LogoButton>
+					<Link to='/welcome'>
+						<LogoImg className='medium-logo' src={logo} alt='savr flame' />
+					</Link>
+				</LogoButton>
+				<h1>Password Reset</h1>
 				{error && <Alert severity='error'>{error}</Alert>}
 				{message && <Alert severity='success'>{message}</Alert>}
 				<form className={classes.form} onSubmit={handleSubmit}>
@@ -98,13 +102,14 @@ export default function ForgotPassword() {
 						// autoComplete='email'
 						autoFocus
 						inputRef={emailRef}
+						color='secondary'
 					/>
 
 					<Button
 						type='submit'
 						fullWidth
 						variant='contained'
-						color='primary'
+						color='default'
 						className={classes.submit}
 						disabled={loading}>
 						Reset Password

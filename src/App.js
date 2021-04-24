@@ -43,24 +43,27 @@ function App() {
 					<Router>
 						{user ? (
 							<>
-								<ChatRoom />
-								<PrivateRoute exact path='/' component={Home} />
+								<Switch>
+									{/* <ChatRoom /> */}
+									<PrivateRoute exact path='/' component={Home} />
+
+									<Route path='/update' component={UpdateProfile} />
+								</Switch>
 							</>
 						) : (
 							<>
 								<Switch>
-									<Route exact path='/'>
+									{/* <Route exact path='/'>
 										{!user ? <Redirect exact to='/welcome' /> : <Welcome />}
-									</Route>
+									</Route> */}
 									<Route path='/signup' component={SignUp} />
 									<Route path='/login' component={LogIn} />
 									<Route path='/welcome' component={Welcome} />
 									<Route path='/forgot-password' component={ForgotPassword} />
-									<Route path='/update' component={UpdateProfile} />
 								</Switch>
 							</>
 						)}
-						<SignOut />
+						{/* <SignOut /> */}
 					</Router>
 				</FaveContextProvider>
 			</AuthProvider>

@@ -20,10 +20,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   span {
-    
     font-family: 'Berkshire Swash', cursive;
-    // color: ${({ theme }) => theme.colors.text};
     color: ${({ theme }) => theme.colors.body};
+
+	
   }
 
    h1, h2, h3, h4, h5, h6 {
@@ -65,15 +65,19 @@ export const GlobalStyles = createGlobalStyle`
     
   }
 
-  #title{
+  .title{
     background-color: transparent;
     //  color: ${({ theme }) => theme.colors.text};
     color: ##356859;
   }
 
-  #subtitle{
+  .subtitle{
     color: ${({ theme }) => theme.colors.body};     
   }
+
+  .list-item{
+	color: ${({ theme }) => theme.colors.text};
+	}
 
   .results {
    
@@ -156,7 +160,7 @@ export const RecipeDiv = styled.div`
 export const RecipeFigure = styled.figure`
 	height: 20vh;
 	// position: relative;
-	transform: scale(1.04) translateY(-1px);
+	transform: scale(1.04) translateY(18px);
 	// transform-origin: top;
 	text-align: center;
 	display: flex;
@@ -166,8 +170,8 @@ export const RecipeFigure = styled.figure`
 
 export const RecipeTitle = styled.h1`
 	position: absolute;
-	bottom: 0;
-	left: 48%;
+	top: -22%;
+	left: 50%;
 	transform: translate(-50%, 20%) skewY(-6deg);
 	color: #fff;
 	font-weight: 700;
@@ -186,7 +190,10 @@ export const RecipeP = styled.p`
 `;
 export const RecipeImg = styled.img`
 	border-radius: 16px;
-	width: 94%;
+	width: 400px;
+	height: 256px;
+	object-fit: cover;
+	overflow: hidden;
 `;
 export const ServingsButton = styled.button`
 	border-radius: 50%;
@@ -198,18 +205,19 @@ export const ServingsButton = styled.button`
 export const DetailsDiv = styled.div`
 	display: flex;
 	align-items: center;
-	// padding: 8rem 3rem 3rem 3rem;
-	padding: 6rem 1rem 1rem 1rem;
+	justify-content: space-between;
+	padding: 4rem 1rem 0rem 1rem;
 `;
 export const InfoDiv = styled.div`
 	font-size: 1.5rem;
-	// text-transform: uppercase;
 	display: flex;
 	align-items: center;
 
-	&:not(:last-child) {
-		margin: 16px;
-	}
+	margin: 16px;
+
+	// &:not(:last-child) {
+	// 	margin: 16px;
+	// }
 `;
 export const HeartButton = styled.button`
 	font-size: 2rem;
@@ -220,32 +228,32 @@ export const HeartButton = styled.button`
 	opacity: 0.8;
 `;
 export const IngredientsDiv = styled.div`
-	padding: 4rem 5rem;
-	font-size: 1.5rem;
-	line-height: 1.4;
-	// background-color: #f2efee;
+	padding: 2rem;
+	font-size: 1.2rem;
+	line-height: 1.2;
 	background-image: linear-gradient(to right bottom, #356859, #fffbe6);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	border-radius: 8px;
-	// transform: translate(-50%, 20%) skewY(-6deg);
 `;
 export const IngredientsUl = styled.ul`
 	list-style: none;
 	padding: 4px;
-
-	& li {
-		padding: 8px;
-	}
 `;
+
+export const IngredientsLi = styled.li`
+	padding: 8px;
+	display: block;
+`;
+
 export const DirectionsDiv = styled.div`
-	padding: 4rem 5rem;
-	// padding-bottom: 5rem;
+	padding: 1.2rem 2.2rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 `;
+
 export const AddButton = styled.button`
 	display: flex;
 	justify-content: center;
