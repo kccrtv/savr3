@@ -15,6 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
 	GlobalStyle,
 	LogoImg,
+	LogoButton,
 } from '../../../infrastructure/theme/components/theme';
 import logo from '../../../assets/logo-lg.svg';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -31,7 +32,7 @@ function Copyright() {
 	return (
 		<Typography variant='body2' color='textSecondary' align='center'>
 			{'Copyright © '}
-			<Link color='inherit' to='/register'>
+			<Link color='inherit' to='/welcome'>
 				Savr 3.0
 			</Link>{' '}
 			{new Date().getFullYear()}
@@ -94,11 +95,13 @@ export default function SignUp() {
 			<GlobalStyle />
 			<CssBaseline />
 			<div className={classes.paper}>
-				<LogoImg src={logo} alt='savr flame' />
+				<LogoButton>
+					<Link to='/welcome'>
+						<LogoImg className='medium-logo' src={logo} alt='savr flame' />
+					</Link>
+				</LogoButton>
 
-				<Typography component='h1' variant='h5'>
-					Sign up
-				</Typography>
+				<h1>Sign up</h1>
 
 				{error && <Alert severity='error'>{error}</Alert>}
 				<form className={classes.form} onSubmit={handleSubmit}>
@@ -113,6 +116,7 @@ export default function SignUp() {
 								name='email'
 								// autoComplete='hidden'
 								inputRef={emailRef}
+								color='secondary'
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -126,6 +130,7 @@ export default function SignUp() {
 								id='password'
 								// autoComplete='hidden'
 								inputRef={passwordRef}
+								color='secondary'
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -139,6 +144,7 @@ export default function SignUp() {
 								id='password-confirm'
 								// autoComplete='hidden'
 								inputRef={passwordConfirmRef}
+								color='secondary'
 							/>
 						</Grid>
 					</Grid>
@@ -146,7 +152,7 @@ export default function SignUp() {
 						type='submit'
 						fullWidth
 						variant='contained'
-						color='primary'
+						color='default'
 						className={classes.submit}
 						disabled={loading}>
 						Sign Up

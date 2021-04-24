@@ -15,6 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
 	GlobalStyle,
 	LogoImg,
+	LogoButton,
 } from '../../../infrastructure/theme/components/theme';
 import logo from '../../../assets/logo-lg.svg';
 
@@ -22,7 +23,7 @@ function Copyright() {
 	return (
 		<Typography variant='body2' color='textSecondary' align='center'>
 			{'Copyright © '}
-			<Link color='inherit' to='/register'>
+			<Link color='inherit' to='/welcome'>
 				Savr 3.0
 			</Link>{' '}
 			{new Date().getFullYear()}
@@ -79,10 +80,12 @@ export default function LogIn() {
 			<GlobalStyle />
 			<CssBaseline />
 			<div className={classes.paper}>
-				<LogoImg src={logo} alt='savr flame' />
-				<Typography component='h1' variant='h5'>
-					Sign in
-				</Typography>
+				<LogoButton>
+					<Link to='/welcome'>
+						<LogoImg className='medium-logo' src={logo} alt='savr flame' />
+					</Link>
+				</LogoButton>
+				<h1>Sign in</h1>
 				{error && <Alert severity='error'>{error}</Alert>}
 				<form className={classes.form} onSubmit={handleSubmit}>
 					<TextField
@@ -96,6 +99,7 @@ export default function LogIn() {
 						// autoComplete='email'
 						autoFocus
 						inputRef={emailRef}
+						color='secondary'
 					/>
 					<TextField
 						variant='outlined'
@@ -107,6 +111,7 @@ export default function LogIn() {
 						type='password'
 						id='password'
 						inputRef={passwordRef}
+						color='secondary'
 					/>
 					{/* <FormControlLabel
 						control={<Checkbox value='remember' color='primary' />}
@@ -116,7 +121,7 @@ export default function LogIn() {
 						type='submit'
 						fullWidth
 						variant='contained'
-						color='primary'
+						color='default'
 						className={classes.submit}
 						disabled={loading}>
 						Sign In

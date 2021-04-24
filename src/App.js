@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './infrastructure/theme/components/GlobalStyles';
 import { useTheme } from './infrastructure/theme/components/useTheme';
 import NavBar from './features/dashboard/components/NavBar';
-import Register from './features/login/screens/Register';
+import Welcome from './features/login/screens/Welcome';
 import Splash from './features/dashboard/components/Splash';
 import Home from './features/dashboard/screens/Home';
 import LogIn from './features/login/screens/LogIn';
@@ -33,47 +38,53 @@ function App() {
 	const [user] = useAuthState(auth);
 	return (
 		<>
-			{/* <Home /> */}
-			{/* <Register /> */}
-			{/* <AuthProvider>
+			<AuthProvider>
 				<FaveContextProvider>
 					<Router>
-						<Switch>
-							
-							<PrivateRoute exact path='/' component={Home} />
-							<Route path='/signup' component={SignUp} />
-							<Route path='/login' component={LogIn} />
-							<Route path='/register' component={Register} />
-							<Route path='/forgot-password' component={ForgotPassword} />
-							<Route path='/update' component={UpdateProfile} />
-						</Switch>
+						{user ? (
+							<>
+								<ChatRoom />
+								<PrivateRoute exact path='/' component={Home} />
+							</>
+						) : (
+							<>
+								<Switch>
+									<Route exact path='/'>
+										{!user ? <Redirect exact to='/welcome' /> : <Welcome />}
+									</Route>
+									<Route path='/signup' component={SignUp} />
+									<Route path='/login' component={LogIn} />
+									<Route path='/welcome' component={Welcome} />
+									<Route path='/forgot-password' component={ForgotPassword} />
+									<Route path='/update' component={UpdateProfile} />
+								</Switch>
+							</>
+						)}
+						<SignOut />
 					</Router>
 				</FaveContextProvider>
-			</AuthProvider> */}
-			{user ? <ChatRoom /> : <SignIn />}
-			{/* <SignIn /> */}
-			<SignOut />
+			</AuthProvider>
 		</>
 	);
 }
 
-function SignIn() {
-	const signInWithGoogle = () => {
-		const provider = new firebase.auth.GoogleAuthProvider();
-		auth.signInWithPopup(provider);
-	};
+// function SignIn() {
+// 	const signInWithGoogle = () => {
+// 		const provider = new firebase.auth.GoogleAuthProvider();
+// 		auth.signInWithPopup(provider);
+// 	};
 
-	return (
-		<>
-			<button className='sign-in' onClick={signInWithGoogle}>
-				Sign in with Google
-			</button>
-			<p>
-				Do not violate the community guidelines or you will be banned for life!
-			</p>
-		</>
-	);
-}
+// 	return (
+// 		<>
+// 			<button className='sign-in' onClick={signInWithGoogle}>
+// 				Sign in with Google
+// 			</button>
+// 			<p>
+// 				Do not violate the community guidelines or you will be banned for life!
+// 			</p>
+// 		</>
+// 	);
+// }
 
 function SignOut() {
 	return (

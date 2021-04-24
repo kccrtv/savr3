@@ -9,6 +9,7 @@ import { GlobalStyle } from '../../../infrastructure/theme/components/theme';
 
 const ControlledDiv = styled.div`
 	align-items: center;
+	padding: 6rem 4rem 4rem 4rem;
 `;
 
 const ButtonContainer = styled.div`

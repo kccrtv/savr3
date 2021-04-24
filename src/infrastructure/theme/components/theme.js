@@ -44,12 +44,24 @@ export const GlobalStyle = createGlobalStyle`
 
 `;
 
-export const SplashBG = styled.main`
+export const SplashBG = styled.div`
 	background-image: url(${splash});
 	opacity: ${(props) => props.opacity || '1'};
-	margin: 0 auto;
 	text-align: center;
 	height: 100vh;
+	width: 70vw;
+	position: absolute;
+	left: 0;
+`;
+
+export const RightSide = styled.div`
+	width: 30vw;
+	position: absolute;
+	right: 0;
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+	height: 100vh;
+	margin: 0 auto;
 `;
 
 export const LogoDiv = styled.div`
@@ -62,7 +74,7 @@ export const LogoDiv = styled.div`
 export const LogoButton = styled.button`
 	background-color: transparent;
 	border: none;
-
+	text-decoration: none;
 	&:hover {
 		cursor: pointer;
 		opacity: 0.8;
@@ -70,5 +82,39 @@ export const LogoButton = styled.button`
 `;
 
 export const LogoImg = styled.img`
-	max-height: 20vh;
+	padding: 14rem 3rem 3rem 3rem;
+	margin: 0 auto;
+
+	&.medium-logo {
+		padding: 0;
+		height: 20vh;
+	}
+`;
+
+export const GoogleButton = styled.button`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+	font-weight: 700;
+	margin: 32px auto;
+
+	& .g-logo {
+		padding: 0 8px 0 0;
+	}
+`;
+
+export const SignUpButton = styled.button`
+	color: #fff;
+	background-color: #ad7d00;
+	width: 65%;
+	margin: 0 auto 32px;
+`;
+
+export const LogInP = styled.p`
+	display: inline-block;
+`;
+
+export const LogInSpan = styled.span`
+	padding: 0 0 0 8px;
 `;
