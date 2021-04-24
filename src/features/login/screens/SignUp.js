@@ -17,6 +17,15 @@ import {
 	LogoImg,
 } from '../../../infrastructure/theme/components/theme';
 import logo from '../../../assets/logo-lg.svg';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+import 'firebase/analytics';
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+const analytics = firebase.analytics();
 
 function Copyright() {
 	return (
@@ -85,41 +94,15 @@ export default function SignUp() {
 			<GlobalStyle />
 			<CssBaseline />
 			<div className={classes.paper}>
-				{/* <Avatar className={classes.avatar}>
-					<LockOutlinedIcon />
-				</Avatar> */}
 				<LogoImg src={logo} alt='savr flame' />
+
 				<Typography component='h1' variant='h5'>
 					Sign up
 				</Typography>
-				{/* <form className={classes.form} noValidate> */}
+
 				{error && <Alert severity='error'>{error}</Alert>}
 				<form className={classes.form} onSubmit={handleSubmit}>
 					<Grid container spacing={2}>
-						{/* <Grid item xs={12} sm={6}>
-							<TextField
-								autoComplete='fname'
-								name='firstName'
-								variant='outlined'
-								required
-								fullWidth
-								id='firstName'
-								label='First Name'
-								autoFocus
-								
-							/>
-						</Grid>
-						<Grid item xs={12} sm={6}>
-							<TextField
-								variant='outlined'
-								required
-								fullWidth
-								id='lastName'
-								label='Last Name'
-								name='lastName'
-								autoComplete='lname'
-							/>
-						</Grid> */}
 						<Grid item xs={12}>
 							<TextField
 								variant='outlined'
