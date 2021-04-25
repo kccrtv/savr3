@@ -1,83 +1,99 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import { Pagination } from '@material-ui/lab';
-import { Link, useHistory } from 'react-router-dom';
-import CustomCard from './CustomCard';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+// import CustomCard from './CustomCard';
 import fire from '../../../assets/fire.svg';
-import moon from '../../../assets/moon.svg';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import {
+	ResultsDiv,
+	ResultTitle,
+	ResultsList,
+	RecipeSpan,
+	EmptyHeader,
+} from '../../../infrastructure/theme/components/GlobalStyles';
+import styled from 'styled-components';
+const key = process.env.REACT_APP_API_KEY;
+const path = 'https://forkify-api.herokuapp.com/api/v2/recipes';
 
-const ResultsDiv = styled.div`
-	grid-column: 1;
-	// display: flex;
-	// flex-wrap: wrap;
-	// align-items: center;
+// function ResultItem(props) {
+// 	return (
+// 		<Link to={props.link}>
+// 			<img src={props.img} alt='recipe result' />
+// 			<ResultTitle>{props.title}</ResultTitle>
+// 			<ArrowRightIcon />
+// 		</Link>
+// 	);
+// }
 
-	// flex-direction: row;
-	// overflow-x: hidden;
-	// overflow-y: scroll;
-	max-height: 95vh;
-	list-style: none;
-	margin: 0 auto;
-	padding: 1rem 0 0 0;
-	width: 35vw;
+// function Results({ results, loadResults }) {
+function Results({ resultDataObjects }) {
+	// const [resultUrls, setResultUrls] = useState(null);
+	// const [results, setResults] = useState([]);
+	// const [resultDataObjects, setResultDataObjects] = useState([]);
 
-	& img {
-		height: 80px;
-		border-radius: 16px;
+	// let searchString = 'paella';
+	// function recipeResults(searchString) {
+	// 	const searchUrl = `${path}?search=${searchString}&key=${key}`;
+	// 	fetch(searchUrl)
+	// 		.then((res) => res.json())
+	// 		.then((res) => {
+	// 			setResults(res.data.recipes);
+	// 			getResultUrls(results);
+	// 			resultBar(results);
+	// 		})
+	// 		.catch(console.error);
+	// }
+
+	// function getResultUrls(results) {
+	// 	let idUrl = results.reduce((acc, curr) => {
+	// 		return [...acc, `${path}/${curr.id}?key=${key}`];
+	// 	}, []);
+	// 	setResultUrls(idUrl);
+	// }
+	// function resultBar(results) {
+	// 	let items = results.map((result) => {
+	// 		return {
+	// 			key: result.id,
+	// 			link: `${path}/${result.id}?key=${key}`,
+	// 			img: result.image_url,
+	// 			title: result.title,
+	// 		};
+
+	// 	});
+	// 	setResultDataObjects(items);
+
+	// }
+
+	// useEffect(() => {
+	// 	recipeResults(searchString);
+	// }, []);
+
+	if (!resultDataObjects) {
+		return (
+			<EmptyHeader>
+				What's on your menu today?{' '}
+				<span role='img' aria-label='chef'>
+					👩🏽‍🍳
+				</span>
+			</EmptyHeader>
+		);
 	}
 
-	& a {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		text-decoration: none;
-		padding: 16px 0 16px 16px;
-		margin: 8px 0;
-		border-bottom: 2px solid #356859;
-	}
-
-	& svg {
-		font-size: 3rem;
-	}
-`;
-
-const ResultTitle = styled.h2`
-	display: inline-flex;
-`;
-
-const ResultsList = styled.ul`
-	// overflow: auto;
-    overflow-y: scroll
-	max-height: 95vh;
-	list-style: none;
-	margin: 0 auto;
-	padding: 1rem 0 0 0;
-	// display: flex;
-	// flex-direction: column;
-`;
-
-function ResultItem(props) {
-	return (
-		<Link to={props.link}>
-			<img src={props.img} alt='recipe result' />
-			<ResultTitle>{props.title}</ResultTitle>
-			<ArrowRightIcon />
-		</Link>
-	);
-}
-
-function Results(props) {
 	return (
 		<>
 			{/* <Pagination className='pagination' count={3} /> */}
 			<ResultsDiv>
-				<ResultItem link='/' img={fire} title='Pizza' />
-
-				{/* <CustomCard />
-				<CustomCard />
-				<CustomCard />
-				<CustomCard /> */}
+				{resultDataObjects
+					? resultDataObjects.map((res) => {
+							return (
+								<Link to={res.link}>
+									<img src={res.img} alt='recipe result' />
+									<ResultTitle>{res.title}</ResultTitle>
+									<ArrowRightIcon />
+								</Link>
+							);
+					  })
+					: null}
 			</ResultsDiv>
 		</>
 	);

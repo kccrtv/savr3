@@ -1,77 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import { RecipeDiv } from '../../../infrastructure/theme/components/GlobalStyles';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/analytics';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { app } from '../../../features/login/components/firebase';
 import SendIcon from '@material-ui/icons/Send';
 import { TextField } from '@material-ui/core';
-
+import {
+	CommunityDiv,
+	MessageDiv,
+	ChatForm,
+	AvatarImg,
+	AvatarDiv,
+} from '../../../infrastructure/theme/components/GlobalStyles';
 const auth = firebase.auth();
 const firestore = firebase.firestore();
-const analytics = firebase.analytics();
-
-const CommunityDiv = styled.div`
-	max-height: 85vh;
-	padding: 16px;
-	overflow: auto;
-`;
-
-const MessageDiv = styled.div`
-	display: flex;
-	align-items: center;
-
-	& p {
-		max-width: 500px;
-		margin-bottom: 12px;
-		line-height: 24px;
-		padding: 10px 20px;
-		border-radius: 16px;
-		position: relative;
-		color: black;
-		text-align: center;
-		background-color: white;
-	}
-	&.sent {
-		flex-direction: row-reverse;
-
-		& p {
-			color: white;
-			background: #356859;
-			align-self: flex-end;
-		}
-	}
-
-	& .received {
-		&p {
-			background: #fffbe6;
-			color: black;
-		}
-	}
-`;
-
-const ChatForm = styled.form`
-	display: inline-flex;
-	align-items: center;
-	width: 100%;
-`;
-
-const AvatarImg = styled.img`
-	width: 35px;
-	height: 35px;
-	border-radius: 50%;
-	margin: 2px 5px;
-`;
-
-const AvatarDiv = styled.div`
-	margin: 2px 5px;
-	display: inline;
-`;
 
 function ChatMessage(props) {
 	const { text, uid, photoURL } = props.message;

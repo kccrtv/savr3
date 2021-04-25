@@ -11,7 +11,6 @@ import {
 import Fave from '../../../features/favorite/components/Fave.js';
 import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree';
 import { useFave } from '../../../infrastructure/contexts/FaveContext';
-import { MicNone } from '@material-ui/icons';
 
 export const useStyles = makeStyles(() => ({
 	actionArea: {
@@ -60,7 +59,7 @@ export const useStyles = makeStyles(() => ({
 }));
 
 const CustomCardStyle = ({ classes, image, title, subtitle }) => {
-	const { faves } = useFave();
+	// const { faves } = useFave();
 
 	const mediaStyles = useFourThreeCardMediaStyles();
 	return (

@@ -17,16 +17,27 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/analytics';
-
-import { app } from '../components/firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+// import { useAuthState } from 'react-firebase-hooks/auth';
 const auth = firebase.auth();
-const firestore = firebase.firestore();
-const analytics = firebase.analytics();
+
+function SignIn() {
+	const signInWithGoogle = () => {
+		const provider = new firebase.auth.GoogleAuthProvider();
+		auth.signInWithPopup(provider);
+	};
+
+	return (
+		<>
+			<GoogleButton onClick={signInWithGoogle}>
+				<img className='g-logo' src={google} alt='google button' />
+				Sign in with Google
+			</GoogleButton>
+		</>
+	);
+}
 
 function Welcome() {
-	const [user] = useAuthState(auth);
+	// const [user] = useAuthState(auth);
 	return (
 		<main>
 			<GlobalStyle />
@@ -54,19 +65,3 @@ function Welcome() {
 }
 
 export default Welcome;
-
-function SignIn() {
-	const signInWithGoogle = () => {
-		const provider = new firebase.auth.GoogleAuthProvider();
-		auth.signInWithPopup(provider);
-	};
-
-	return (
-		<>
-			<GoogleButton onClick={signInWithGoogle}>
-				<img className='g-logo' src={google} alt='google button' />
-				Sign in with Google
-			</GoogleButton>
-		</>
-	);
-}

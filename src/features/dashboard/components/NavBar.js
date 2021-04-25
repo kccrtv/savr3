@@ -18,23 +18,15 @@ import {
 	MenuItem,
 	Fade,
 	Button,
-	Popover,
-	Typography,
 } from '@material-ui/core';
-import { Alert, Pagination } from '@material-ui/lab';
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/analytics';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { app } from '../../../features/login/components/firebase';
+
 import SimplePopover from './SimplePopover';
 const auth = firebase.auth();
-const firestore = firebase.firestore();
-const analytics = firebase.analytics();
 
 const Logo = styled.div`
 	display: inline-block;
@@ -53,6 +45,14 @@ const Savr = styled.a`
 	margin-top: 0;
 	vertical-align: bottom;
 `;
+
+const SearchForm = styled.form`
+	margin: 0 32px 0 0;
+	cursor: pointer;
+	background: transparent;
+	border: 1px solid black;
+`;
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
@@ -70,15 +70,18 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	search: {
-		flexGrow: 1,
-		position: 'relative',
+		flexGrow: 2,
+		// position: 'relative',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'space-between',
 		borderRadius: theme.shape.borderRadius,
-		backgroundColor: fade(theme.palette.common.white, 0.15),
-		'&:hover': {
-			backgroundColor: fade(theme.palette.common.white, 0.25),
-		},
+		// backgroundColor: fade(theme.palette.common.white, 0.15),
+		// '&:hover': {
+		// 	backgroundColor: fade(theme.palette.common.white, 0.25),
+		// },
 		marginLeft: 0,
-		width: '100%',
+		// width: '100%',
 		[theme.breakpoints.up('sm')]: {
 			marginLeft: theme.spacing(1),
 			width: 'auto',
@@ -87,11 +90,12 @@ const useStyles = makeStyles((theme) => ({
 	searchIcon: {
 		padding: theme.spacing(0, 2),
 		height: '100%',
-		position: 'absolute',
+		// position: 'absolute',
 		pointerEvents: 'none',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
+		// display: 'flex',
+		// alignItems: 'center',
+		// justifyContent: 'center',
+		backgroundColor: 'transparent',
 	},
 	inputRoot: {
 		color: 'inherit',
@@ -116,26 +120,27 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function NavBar(props) {
-	const { theme, themeLoaded, getIcons } = useTheme();
+function NavBar({ handleChange, handleSubmit, searchString }) {
+	const { theme, themeLoaded } = useTheme();
 	const [selectedTheme, setSelectedTheme] = useState(theme);
-	const [error, setError] = useState('');
-	const { currentUser, logout } = useAuth();
-	const history = useHistory();
+	// const [error, setError] = useState('');
+	// const { currentUser, logout } = useAuth();
+	// const history = useHistory();
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
 
-	async function handleLogout() {
-		setError('');
-		setAnchorEl(null);
-		try {
-			await logout();
-			history.push('/login');
-		} catch {
-			setError('Failed to log out');
-		}
-	}
+	// async function handleLogout() {
+	// 	setError('');
+	// 	setAnchorEl(null);
+	// 	try {
+	// 		await logout();
+	// 		history.push('/login');
+	// 	} catch {
+	// 		setError('Failed to log out');
+	//		return error;
+	// 	}
+	// }
 
 	useEffect(() => {
 		setSelectedTheme(theme);
@@ -163,16 +168,20 @@ function NavBar(props) {
 							</Logo>
 							<SimplePopover />
 							<div className={classes.search}>
-								<div className={classes.searchIcon}>
-									<SearchIcon />
-								</div>
-								<InputBase
-									placeholder='Search…'
-									classes={{
-										root: classes.inputRoot,
-										input: classes.inputInput,
-									}}
-									inputProps={{ 'aria-label': 'search' }}></InputBase>
+								<SearchForm onSubmit={handleSubmit}>
+									<InputBase
+										placeholder='Search…'
+										classes={{
+											root: classes.inputRoot,
+											input: classes.inputInput,
+										}}
+										inputProps={{ 'aria-label': 'search' }}
+										onChange={handleChange}
+										value={searchString}></InputBase>
+									{/* <button type='submit' className={classes.searchIcon}>
+										<SearchIcon />
+									</button> */}
+								</SearchForm>
 							</div>
 
 							<Button

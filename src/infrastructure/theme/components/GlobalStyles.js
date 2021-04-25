@@ -155,6 +155,7 @@ export const RecipeDiv = styled.div`
 	max-height: 95vh;
 	padding: 16px;
 	width: 35vw;
+	grid-column: 2;
 `;
 
 export const RecipeFigure = styled.figure`
@@ -258,4 +259,116 @@ export const AddButton = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+`;
+
+export const ResultsDiv = styled.div`
+	grid-column: 1;
+	// display: flex;
+	// flex-wrap: wrap;
+	// align-items: center;
+
+	// flex-direction: row;
+	// overflow-x: hidden;
+	// overflow-y: scroll;
+	max-height: 95vh;
+	list-style: none;
+	margin: 0 auto;
+	padding: 1rem 0 0 0;
+	width: 30vw;
+
+	& img {
+		height: 80px;
+		border-radius: 16px;
+	}
+
+	& a {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		text-decoration: none;
+		padding: 16px 0 16px 16px;
+		margin: 8px 0;
+		border-bottom: 2px solid #356859;
+	}
+
+	& svg {
+		font-size: 3rem;
+	}
+`;
+
+export const EmptyHeader = styled.h2`
+	padding: 48px;
+	text-align: center;
+`;
+
+export const ResultTitle = styled.h2`
+	display: inline-flex;
+`;
+
+export const ResultsList = styled.ul`
+	// overflow: auto;
+    overflow-y: scroll
+	max-height: 95vh;
+	list-style: none;
+	margin: 0 auto;
+	padding: 1rem 0 0 0;
+	// display: flex;
+	// flex-direction: column;
+`;
+
+export const CommunityDiv = styled.div`
+	max-height: 85vh;
+	padding: 16px;
+	overflow: auto;
+	grid-column: 3;
+`;
+
+export const MessageDiv = styled.div`
+	display: flex;
+	align-items: center;
+
+	& p {
+		max-width: 500px;
+		margin-bottom: 12px;
+		line-height: 24px;
+		padding: 10px 20px;
+		border-radius: 16px;
+		position: relative;
+		color: black;
+		text-align: center;
+		background-color: white;
+	}
+	&.sent {
+		flex-direction: row-reverse;
+
+		& p {
+			color: white;
+			background: #356859;
+			align-self: flex-end;
+		}
+	}
+
+	& .received {
+		&p {
+			background: #fffbe6;
+			color: black;
+		}
+	}
+`;
+export const ChatForm = styled.form`
+	display: inline-flex;
+	align-items: center;
+	width: 100%;
+`;
+
+export const AvatarImg = styled.img`
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	margin: 2px 5px;
+`;
+
+export const AvatarDiv = styled.div`
+	margin: 2px 5px;
+	display: inline;
 `;

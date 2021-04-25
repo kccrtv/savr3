@@ -18,8 +18,6 @@ import {
 	LogoButton,
 } from '../../../infrastructure/theme/components/theme';
 import logo from '../../../assets/logo-lg.svg';
-import { GlobalStyles } from '../../../infrastructure/theme/components/GlobalStyles';
-import NavBar from '../../dashboard/components/NavBar';
 
 function Copyright() {
 	return (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { setToLS, getFromLS } from '../../../utils/storage';
-import _ from 'lodash';
+// import _ from 'lodash';
 
 export const useTheme = () => {
 	const themes = getFromLS('all-themes');

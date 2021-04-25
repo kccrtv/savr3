@@ -18,15 +18,9 @@ import {
 	LogoButton,
 } from '../../../infrastructure/theme/components/theme';
 import logo from '../../../assets/logo-lg.svg';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/analytics';
-const auth = firebase.auth();
-const firestore = firebase.firestore();
-const analytics = firebase.analytics();
 
 function Copyright() {
 	return (

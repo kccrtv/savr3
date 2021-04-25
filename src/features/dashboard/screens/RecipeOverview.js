@@ -1,9 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import TimerIcon from '@material-ui/icons/Timer';
 import GroupIcon from '@material-ui/icons/Group';
-// import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import {
 	RecipeDiv,
 	RecipeFigure,
@@ -14,17 +11,20 @@ import {
 	ServingsButton,
 	DetailsDiv,
 	InfoDiv,
-	HeartButton,
 	IngredientsDiv,
 	IngredientsUl,
 	IngredientsLi,
 	DirectionsDiv,
-	AddButton,
 } from '../../../infrastructure/theme/components/GlobalStyles';
 
 function RecipeOverview(props) {
 	let ingredientsArray = props.ingredients;
+	// console.log('ingredientsArray', ingredientsArray);
 	// console.log('ia0', ingredientsArray[0]);
+	// const listedIngredients = ingredientsArray.forEach((item) => {
+	// 	// return `'ing: ', ${ing}, 'index: ', ${index}`;
+	// 	return <p>{item}</p>;
+	// });
 
 	return (
 		<RecipeDiv>
@@ -60,8 +60,9 @@ function RecipeOverview(props) {
 				<h3>Ingredients</h3>
 				<IngredientsUl>
 					{ingredientsArray &&
-						ingredientsArray[0].forEach((ing) => {
-							return <IngredientsLi>{ing}</IngredientsLi>;
+						ingredientsArray.forEach((ing) => {
+							// return <IngredientsLi>{ing}</IngredientsLi>;
+							return <p>{ing}</p>;
 						})}
 				</IngredientsUl>
 			</IngredientsDiv>

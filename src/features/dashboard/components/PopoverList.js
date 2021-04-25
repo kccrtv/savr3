@@ -5,7 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import styled from 'styled-components';
 
 const QueryListItemStyle = styled.div`
-	background-color: #f5bbcf;
+	background-color: #fed260;
 `;
 
 function QueryListItem(props) {

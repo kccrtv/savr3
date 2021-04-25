@@ -4,9 +4,7 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import HelpIcon from '@material-ui/icons/Help';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import { FixedSizeList } from 'react-window';
+
 import PopoverList from './PopoverList';
 
 const useStyles = makeStyles((theme) => ({
