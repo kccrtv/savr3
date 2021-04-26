@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { auth } from '../../features/login/components/firebase';
+// import { auth } from '../../App';
 
 // export const [user] = useAuthState(auth);
 
@@ -35,6 +36,10 @@ export function AuthProvider({ children }) {
 
 	function updatePassword(password) {
 		return currentUser.updatePassword(password);
+	}
+
+	function googleLogin() {
+		return auth.signInWithPopup();
 	}
 
 	useEffect(() => {
