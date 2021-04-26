@@ -61,6 +61,7 @@ export const GlobalStyles = createGlobalStyle`
   #home {
     display: grid;
     grid-template-columns: fit-content(30%) 1.2fr  0.8fr;
+	grid-template-rows: 56px 80vh;
     margin: 0 auto;
     
   }
@@ -264,8 +265,16 @@ export const AddButton = styled.button`
 	align-items: center;
 `;
 
+export const ResultsString = styled.h2`
+	grid-column: 1;
+	grid-row: 1;
+	text-align: center;
+	padding-top: 16px;
+`;
+
 export const ResultsDiv = styled.div`
 	grid-column: 1;
+	grid-row: 2;
 	// display: flex;
 	// flex-wrap: wrap;
 	// align-items: center;
@@ -273,7 +282,7 @@ export const ResultsDiv = styled.div`
 	// flex-direction: row;
 	overflow-x: hidden;
 	overflow-y: scroll;
-	max-height: 88vh;
+	max-height: 80vh;
 	list-style: none;
 	margin: 0 auto;
 	padding: 1rem 0 0 0;
@@ -300,9 +309,10 @@ export const ResultsDiv = styled.div`
 `;
 
 export const EmptyHeader = styled.h2`
-	padding: 16px 48px;
+	padding: 8px 48px;
 	text-align: center;
 	grid-column: 3;
+	grid-row: 1;
 `;
 
 export const ResultTitle = styled.h2`
@@ -325,6 +335,7 @@ export const CommunityDiv = styled.div`
 	padding: 16px;
 	overflow: auto;
 	grid-column: 3;
+	grid-row: 2;
 `;
 
 export const MessageDiv = styled.div`

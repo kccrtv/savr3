@@ -9,6 +9,7 @@ import {
 	RecipeSpan,
 	EmptyHeader,
 	RecipeDiv,
+	ResultsString,
 } from '../../../infrastructure/theme/components/GlobalStyles';
 import { useTheme } from '../../../infrastructure/theme/components/useTheme';
 import NavBar from '../components/NavBar';
@@ -265,6 +266,9 @@ function Home() {
 						searchString={searchString}
 					/>
 					<main id='home'>
+						{resultDataObjects ? (
+							<ResultsString>{searchString}</ResultsString>
+						) : null}
 						<ResultsDiv>
 							{/* {resultDataObjects ? (
 								resultDataObjects.map((res) => {

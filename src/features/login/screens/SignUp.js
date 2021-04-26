@@ -18,9 +18,35 @@ import {
 	LogoButton,
 } from '../../../infrastructure/theme/components/theme';
 import logo from '../../../assets/logo-lg.svg';
+import google from '../../../assets/google-logo.png';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/analytics';
+const auth = firebase.auth();
+
+function SignIn(props) {
+	const signInWithGoogle = () => {
+		const provider = new firebase.auth.GoogleAuthProvider();
+		auth.signInWithPopup(provider);
+	};
+
+	return (
+		<>
+			<Button
+				type='submit'
+				fullWidth
+				variant='contained'
+				color='default'
+				onClick={signInWithGoogle}
+				className={props.className}
+				disabled={props.disabled}>
+				<img className='g-logo' src={google} alt='google button' />
+				Sign in with Google
+			</Button>
+		</>
+	);
+}
 
 function Copyright() {
 	return (
@@ -151,7 +177,7 @@ export default function SignUp() {
 						disabled={loading}>
 						Sign Up
 					</Button>
-
+					<SignIn className={classes.submit} disabled={loading} />
 					<Grid container justify='flex-end'>
 						<Grid item>
 							<Link to='/login' variant='body2'>
