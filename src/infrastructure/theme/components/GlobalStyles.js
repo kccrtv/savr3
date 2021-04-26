@@ -9,7 +9,6 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
   body {
-    // overflow: hidden;
     background: ${({ theme }) => theme.colors.body};
     color: ${({ theme }) => theme.colors.text};
     font-family: 'Open Sans', sans-serif;
@@ -68,7 +67,6 @@ export const GlobalStyles = createGlobalStyle`
 
   .title{
     background-color: transparent;
-    //  color: ${({ theme }) => theme.colors.text};
     color: ##356859;
   }
 
@@ -81,16 +79,13 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
   .results {
-   
-    display: grid;
+   display: grid;
    grid-template-columns: 200px 16px 200px auto;
    grid-template-rows: repeat(4, 24px 16px 320px);
    grid-column: 1/2;
   }
   
   .pagination {
-    
-    
     display: grid;
     grid-row: 1 / 2;
     grid-column: 1 / 5;
@@ -99,7 +94,7 @@ export const GlobalStyles = createGlobalStyle`
 
   .pagination button {
     font-family: 'Open Sans', sans-serif;
-color: ${({ theme }) => theme.colors.text};
+	color: ${({ theme }) => theme.colors.text};
   }
 
   .column-1 {
@@ -115,8 +110,8 @@ color: ${({ theme }) => theme.colors.text};
   .heart {
     color: ${({ theme }) => theme.colors.button.text};
     border: none;
-	  background-color: transparent;
-	  float: right;
+	background-color: transparent;
+	float: right;
     padding: 0;
     margin: 0;
     opacity: 0.8;
@@ -162,9 +157,7 @@ export const RecipeDiv = styled.div`
 
 export const RecipeFigure = styled.figure`
 	height: 20vh;
-	// position: relative;
 	transform: scale(1.04) translateY(18px);
-	// transform-origin: top;
 	text-align: center;
 	display: flex;
 	align-items: center;
@@ -184,14 +177,17 @@ export const RecipeTitle = styled.h1`
 	line-height: 1.95;
 	text-align: center;
 `;
+
 export const RecipeSpan = styled.span`
 	padding: 1.3rem 1rem;
 	background-image: linear-gradient(to right bottom, #356859, #fffbe6);
 `;
+
 export const RecipeP = styled.p`
 	padding: 4px;
 	font-size: 1.2rem;
 `;
+
 export const RecipeImg = styled.img`
 	border-radius: 16px;
 	width: 400px;
@@ -199,6 +195,7 @@ export const RecipeImg = styled.img`
 	object-fit: cover;
 	overflow: hidden;
 `;
+
 export const ServingsButton = styled.button`
 	border-radius: 50%;
 	width: 2.2rem;
@@ -206,23 +203,21 @@ export const ServingsButton = styled.button`
 	padding: 8px;
 	margin: 4px 2px;
 `;
+
 export const DetailsDiv = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 4rem 1rem 0rem 1rem;
 `;
+
 export const InfoDiv = styled.div`
 	font-size: 1.5rem;
 	display: flex;
 	align-items: center;
-
 	margin: 16px;
-
-	// &:not(:last-child) {
-	// 	margin: 16px;
-	// }
 `;
+
 export const HeartButton = styled.button`
 	font-size: 2rem;
 	border: none;
@@ -231,6 +226,7 @@ export const HeartButton = styled.button`
 	margin: 2px;
 	opacity: 0.8;
 `;
+
 export const IngredientsDiv = styled.div`
 	padding: 2rem;
 	font-size: 1.2rem;
@@ -241,6 +237,7 @@ export const IngredientsDiv = styled.div`
 	align-items: center;
 	border-radius: 8px;
 `;
+
 export const IngredientsUl = styled.ul`
 	list-style: none;
 	padding: 4px;
@@ -275,11 +272,6 @@ export const ResultsString = styled.h2`
 export const ResultsDiv = styled.div`
 	grid-column: 1;
 	grid-row: 2;
-	// display: flex;
-	// flex-wrap: wrap;
-	// align-items: center;
-
-	// flex-direction: row;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	max-height: 80vh;
@@ -320,14 +312,11 @@ export const ResultTitle = styled.h2`
 `;
 
 export const ResultsList = styled.ul`
-	// overflow: auto;
     overflow-y: scroll
 	max-height: 95vh;
 	list-style: none;
 	margin: 0 auto;
 	padding: 1rem 0 0 0;
-	// display: flex;
-	// flex-direction: column;
 `;
 
 export const CommunityDiv = styled.div`
@@ -370,6 +359,7 @@ export const MessageDiv = styled.div`
 		}
 	}
 `;
+
 export const ChatForm = styled.form`
 	display: inline-flex;
 	align-items: center;

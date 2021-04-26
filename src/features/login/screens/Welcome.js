@@ -13,45 +13,31 @@ import {
 import ControlledLottie from '../../dashboard/components/ControlledLottie';
 import logo from '../../../assets/logo-lg.svg';
 import google from '../../../assets/google-logo.png';
-// import firebase from 'firebase/app';
-// import 'firebase/firestore';
-// import 'firebase/auth';
-// import 'firebase/analytics';
-// import { useAuthState } from 'react-firebase-hooks/auth';
-// const auth = firebase.auth();
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+import 'firebase/analytics';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../../features/login/components/firebase';
 
-// function SignIn() {
-// 	const signInWithGoogle = () => {
-// 		const provider = new firebase.auth.GoogleAuthProvider();
-// 		auth.signInWithPopup(provider);
-// Using a popup.
-// var provider = new firebase.auth.GoogleAuthProvider();
-// provider.addScope('profile');
-// provider.addScope('email');
-// firebase
-// 	.auth()
-// 	.signInWithPopup(provider)
-// 	.then(function (result) {
-// 		// This gives you a Google Access Token.
-// 		var token = result.credential.accessToken;
-// 		// The signed-in user info.
-// 		var user = result.user;
-// 	});
-// };
+function SignIn() {
+	const signInWithGoogle = () => {
+		const provider = new firebase.auth.GoogleAuthProvider();
+		auth.signInWithPopup(provider);
+	};
 
-// 	return (
-// 		<>
-// 			<GoogleButton onClick={signInWithGoogle}>
-// 				<img className='g-logo' src={google} alt='google button' />
-// 				Sign in with Google
-// 			</GoogleButton>
-// 		</>
-// 	);
-// }
+	return (
+		<>
+			<GoogleButton onClick={signInWithGoogle}>
+				<img className='g-logo' src={google} alt='google button' />
+				Sign in with Google
+			</GoogleButton>
+		</>
+	);
+}
 
 function Welcome() {
-	// const [user] = useAuthState(auth);
+	const [user] = useAuthState(auth);
 	return (
 		<main>
 			<GlobalStyle />
@@ -62,7 +48,7 @@ function Welcome() {
 			<RightSide>
 				<ControlledLottie />
 				<div>
-					{/* <SignIn /> */}
+					<SignIn />
 
 					<Link to='/signup'>
 						<SignUpButton>Sign up with email </SignUpButton>
@@ -73,7 +59,6 @@ function Welcome() {
 					</Link>
 				</div>
 			</RightSide>
-			{/* {user ? <ChatRoom /> : <SignIn />} */}
 		</main>
 	);
 }

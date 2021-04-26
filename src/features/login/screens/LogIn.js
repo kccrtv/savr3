@@ -16,39 +16,8 @@ import {
 	GlobalStyle,
 	LogoImg,
 	LogoButton,
-	GoogleButton,
 } from '../../../infrastructure/theme/components/theme';
 import logo from '../../../assets/logo-lg.svg';
-import google from '../../../assets/google-logo.png';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
-import 'firebase/analytics';
-// import { useAuthState } from 'react-firebase-hooks/auth';
-const auth = firebase.auth();
-
-// function SignIn(props) {
-// 	const signInWithGoogle = () => {
-// 		const provider = new firebase.auth.GoogleAuthProvider();
-// 		auth.signInWithPopup(provider);
-// 	};
-
-// 	return (
-// 		<>
-// 			<Button
-// 				type='submit'
-// 				fullWidth
-// 				variant='contained'
-// 				color='default'
-// 				onClick={signInWithGoogle}
-// 				className={props.className}
-// 				disabled={props.disabled}>
-// 				<img className='g-logo' src={google} alt='google button' />
-// 				Sign in with Google
-// 			</Button>
-// 		</>
-// 	);
-// }
 
 function Copyright() {
 	return (
@@ -127,7 +96,6 @@ export default function LogIn() {
 						id='email'
 						label='Email Address'
 						name='email'
-						// autoComplete='email'
 						autoFocus
 						inputRef={emailRef}
 						color='secondary'
@@ -144,10 +112,6 @@ export default function LogIn() {
 						inputRef={passwordRef}
 						color='secondary'
 					/>
-					{/* <FormControlLabel
-						control={<Checkbox value='remember' color='primary' />}
-						label='Remember me'
-					/> */}
 					<Button
 						type='submit'
 						fullWidth
@@ -157,7 +121,6 @@ export default function LogIn() {
 						disabled={loading}>
 						Sign In
 					</Button>
-					{/* <SignIn className={classes.submit} disabled={loading} /> */}
 					<Grid container>
 						<Grid item xs>
 							<Link to='/forgot-password' variant='body2'>

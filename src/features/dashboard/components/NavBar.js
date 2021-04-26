@@ -1,15 +1,12 @@
-// 1: Import
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../../infrastructure/contexts/AuthContext';
+import { Link } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '../../../infrastructure/theme/components/GlobalStyles';
 import { useTheme } from '../../../infrastructure/theme/components/useTheme';
 import ThemeSelector from '../../../infrastructure/theme/screens/ThemeSelector';
 import flame from '../../../assets/fire.svg';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import {
 	AppBar,
 	Toolbar,
@@ -72,17 +69,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 	search: {
 		flexGrow: 2,
-		// position: 'relative',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		borderRadius: theme.shape.borderRadius,
-		// backgroundColor: fade(theme.palette.common.white, 0.15),
-		// '&:hover': {
-		// 	backgroundColor: fade(theme.palette.common.white, 0.25),
-		// },
 		marginLeft: 0,
-		// width: '100%',
 		[theme.breakpoints.up('sm')]: {
 			marginLeft: theme.spacing(1),
 			width: 'auto',
@@ -91,11 +82,7 @@ const useStyles = makeStyles((theme) => ({
 	searchIcon: {
 		padding: theme.spacing(0, 2),
 		height: '100%',
-		// position: 'absolute',
 		pointerEvents: 'none',
-		// display: 'flex',
-		// alignItems: 'center',
-		// justifyContent: 'center',
 		backgroundColor: 'transparent',
 	},
 	inputRoot: {
@@ -124,24 +111,9 @@ const useStyles = makeStyles((theme) => ({
 function NavBar({ handleChange, handleSubmit, searchString }) {
 	const { theme, themeLoaded } = useTheme();
 	const [selectedTheme, setSelectedTheme] = useState(theme);
-	// const [error, setError] = useState('');
-	// const { currentUser, logout } = useAuth();
-	// const history = useHistory();
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
-
-	// async function handleLogout() {
-	// 	setError('');
-	// 	setAnchorEl(null);
-	// 	try {
-	// 		await logout();
-	// 		history.push('/login');
-	// 	} catch {
-	// 		setError('Failed to log out');
-	//		return error;
-	// 	}
-	// }
 
 	useEffect(() => {
 		setSelectedTheme(theme);
@@ -179,9 +151,6 @@ function NavBar({ handleChange, handleSubmit, searchString }) {
 										inputProps={{ 'aria-label': 'search' }}
 										onChange={handleChange}
 										value={searchString}></InputBase>
-									{/* <button type='submit' className={classes.searchIcon}>
-										<SearchIcon />
-									</button> */}
 								</SearchForm>
 							</div>
 

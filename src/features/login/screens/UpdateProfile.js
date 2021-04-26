@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: theme.palette.secondary.main,
 	},
 	form: {
-		width: '100%', // Fix IE 11 issue.
+		width: '100%',
 		marginTop: theme.spacing(3),
 	},
 	submit: {
@@ -116,7 +116,6 @@ export default function UpdateProfile() {
 								label='Email Address'
 								name='email'
 								inputRef={emailRef}
-								// required
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -142,7 +141,6 @@ export default function UpdateProfile() {
 								type='password'
 								id='password-confirm'
 								placeholder='Leave blank to keep the same'
-								// autoComplete='hidden'
 								inputRef={passwordConfirmRef}
 							/>
 						</Grid>

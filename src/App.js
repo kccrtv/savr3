@@ -3,10 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { auth } from './features/login/components/firebase';
 import { AuthProvider } from './infrastructure/contexts/AuthContext';
 import { useAuthState } from 'react-firebase-hooks/auth';
-// import firebase from 'firebase/app';
-// import 'firebase/firestore';
-// import 'firebase/auth';
-// import 'firebase/analytics';
 import PrivateRoute from './features/login/screens/PrivateRoute';
 import Home from './features/dashboard/screens/Home';
 import UpdateProfile from './features/login/screens/UpdateProfile';
@@ -15,20 +11,6 @@ import LogIn from './features/login/screens/LogIn';
 import Welcome from './features/login/screens/Welcome';
 import ForgotPassword from './features/login/screens/ForgotPassword';
 import RecipeOverview from './features/dashboard/screens/RecipeOverview';
-// const app = firebase.initializeApp({
-// 	// firebase.initializeApp({
-// 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-// 	authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-// 	projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-// 	storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-// 	messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-// 	appId: process.env.REACT_APP_FIREBASE_APP_ID,
-// });
-
-// export const auth = app.auth();
-// const auth = app.auth();
-
-// export const auth = firebase.auth();
 
 function App() {
 	const [user] = useAuthState(auth);
