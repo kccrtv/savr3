@@ -1,7 +1,15 @@
+// const admin = require('firebase-admin');
+// import * as admin from 'firebase-admin';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/analytics';
+// require('dotenv').config();
+
+// const serviceAccount = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+// admin.initializeApp({
+// 	credential: admin.credential.cert(serviceAccount),
+// });
 
 const app = firebase.initializeApp({
 	// firebase.initializeApp({
