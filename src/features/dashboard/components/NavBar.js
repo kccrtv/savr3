@@ -50,7 +50,8 @@ const SearchForm = styled.form`
 	margin: 0 32px 0 0;
 	cursor: pointer;
 	background: transparent;
-	border: 1px solid black;
+	border: 1px solid #ad7d00;
+	border-radius: 8px;
 `;
 
 const useStyles = makeStyles((theme) => ({
@@ -104,9 +105,9 @@ const useStyles = makeStyles((theme) => ({
 		padding: theme.spacing(1, 1, 1, 0),
 		paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
 		transition: theme.transitions.create('width'),
-		width: '100%',
+		width: '55ch',
 		[theme.breakpoints.up('sm')]: {
-			width: '12ch',
+			width: '55ch',
 			'&:focus': {
 				width: '20ch',
 			},
@@ -170,7 +171,7 @@ function NavBar({ handleChange, handleSubmit, searchString }) {
 							<div className={classes.search}>
 								<SearchForm onSubmit={handleSubmit}>
 									<InputBase
-										placeholder='Search…'
+										placeholder='Search over 1,000,000 recipes courtesy of @jonasschmedtman'
 										classes={{
 											root: classes.inputRoot,
 											input: classes.inputInput,

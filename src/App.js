@@ -13,8 +13,7 @@ import SignUp from './features/login/screens/SignUp';
 import LogIn from './features/login/screens/LogIn';
 import Welcome from './features/login/screens/Welcome';
 import ForgotPassword from './features/login/screens/ForgotPassword';
-
-import Results from './features/dashboard/screens/Results';
+import RecipeOverview from './features/dashboard/screens/RecipeOverview';
 
 const auth = firebase.auth();
 
@@ -28,7 +27,7 @@ function App() {
 						<>
 							<Switch>
 								<PrivateRoute exact path='/' component={Home} />
-
+								<Route path='/details/:id' component={RecipeOverview} />
 								<Route path='/update' component={UpdateProfile} />
 							</Switch>
 						</>

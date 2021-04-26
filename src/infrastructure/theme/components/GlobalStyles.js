@@ -156,6 +156,7 @@ export const RecipeDiv = styled.div`
 	padding: 16px;
 	width: 35vw;
 	grid-column: 2;
+	padding: 8rem 4rem 4rem 4rem;
 `;
 
 export const RecipeFigure = styled.figure`
@@ -167,11 +168,12 @@ export const RecipeFigure = styled.figure`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding-bottom: 4rem;
 `;
 
 export const RecipeTitle = styled.h1`
 	position: absolute;
-	top: -22%;
+	top: -42%;
 	left: 50%;
 	transform: translate(-50%, 20%) skewY(-6deg);
 	color: #fff;
@@ -249,10 +251,11 @@ export const IngredientsLi = styled.li`
 `;
 
 export const DirectionsDiv = styled.div`
-	padding: 1.2rem 2.2rem;
+	padding: 3.2rem 2.2rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background-image: linear-gradient(to right bottom, #356859, #fffbe6);
 `;
 
 export const AddButton = styled.button`
@@ -268,9 +271,9 @@ export const ResultsDiv = styled.div`
 	// align-items: center;
 
 	// flex-direction: row;
-	// overflow-x: hidden;
-	// overflow-y: scroll;
-	max-height: 95vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	max-height: 88vh;
 	list-style: none;
 	margin: 0 auto;
 	padding: 1rem 0 0 0;
@@ -297,8 +300,9 @@ export const ResultsDiv = styled.div`
 `;
 
 export const EmptyHeader = styled.h2`
-	padding: 48px;
+	padding: 16px 48px;
 	text-align: center;
+	grid-column: 3;
 `;
 
 export const ResultTitle = styled.h2`
@@ -317,7 +321,7 @@ export const ResultsList = styled.ul`
 `;
 
 export const CommunityDiv = styled.div`
-	max-height: 85vh;
+	max-height: 78vh;
 	padding: 16px;
 	overflow: auto;
 	grid-column: 3;

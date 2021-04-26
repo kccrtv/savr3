@@ -31,6 +31,8 @@ function Home() {
 	const [lastSearch, setLastSearch] = useState('');
 	const [resultUrls, setResultUrls] = useState(null);
 	const [resultDataObjects, setResultDataObjects] = useState([]);
+	// const [recipeDetails, setRecipeDetails] = useState();
+	const [recipePath, setRecipePath] = useState('');
 
 	function handleChange(event) {
 		setSearchString(event.target.value);
@@ -42,6 +44,46 @@ function Home() {
 		recipeResults(searchString);
 	}
 
+	function handleClick(event) {
+		event.preventDefault();
+		setRecipePath(event.target.pathname.substring(1));
+		let recipeUrl = `${path}/${recipePath}?key=${key}`;
+		getRecipeDetails(recipeUrl);
+	}
+
+	function getRecipeDetails(recipeUrl) {
+		fetch(recipeUrl)
+			.then((res) => res.json())
+			.then((res) => {
+				let recipeData = res.data.recipe;
+
+				let ingredientsObject = recipeData.ingredients;
+
+				const ingredientsArray = ingredientsObject.map((item) => {
+					let quantity = item.quantity;
+					let unit = item.unit;
+					let description = item.description;
+					return `${quantity} ${unit} ${description}`;
+				});
+
+				setIngredients(ingredientsArray);
+
+				recipeData = {
+					id: recipeData.id,
+					title: recipeData.title,
+					publisher: recipeData.publisher,
+					sourceUrl: recipeData.source_url,
+					image: recipeData.image_url,
+					servings: recipeData.servings,
+					cookingTime: recipeData.cooking_time,
+					ingredients: [ingredients],
+				};
+				setRecipe(recipeData);
+			})
+			.catch(console.error);
+	}
+
+	// console.log(path);
 	// function getResultUrls(results) {
 	// 	let idUrl = results.reduce((acc, curr) => {
 	// 		return [...acc, `${path}/${curr.id}?key=${key}`];
@@ -75,7 +117,7 @@ function Home() {
 						index++;
 						return {
 							key: result.id,
-							link: `${path}/${result.id}?key=${key}`,
+							link: result.id,
 							img: result.image_url,
 							title: result.title,
 						};
@@ -192,6 +234,26 @@ function Home() {
 
 	// console.log(resultDataObjects);
 
+	// function fullResultsList(resultDataObjects) {
+	// 	resultDataObjects.map((res, index) => {
+	// 		if (res) {
+	// 			index++;
+	// 			// ++index;
+	// 			return (
+	// 				<Link
+	// 					onClick={handleClick}
+	// 					// to={`/details/${res.link}`}
+	// 					to={res.link}
+	// 					key={res.key}>
+	// 					<img src={res.img} alt='recipe result' />
+	// 					<ResultTitle>{res.title}</ResultTitle>
+	// 					<ArrowRightIcon />
+	// 				</Link>
+	// 			);
+	// 		}
+	// 	});
+	// }
+
 	return (
 		<>
 			{themeLoaded && (
@@ -222,28 +284,26 @@ function Home() {
 									</span>
 								</EmptyHeader>
 							)} */}
-							{resultDataObjects ? (
-								resultDataObjects.map((res, index) => {
-									if (res) {
-										index++;
-										// ++index;
-										return (
-											<Link to={res.link}>
-												<img src={res.img} alt='recipe result' />
-												<ResultTitle>{res.title}</ResultTitle>
-												<ArrowRightIcon />
-											</Link>
-										);
-									}
-								})
-							) : (
-								<EmptyHeader>
-									What's on your menu today?{' '}
-									<span role='img' aria-label='chef'>
-										👩🏽‍🍳
-									</span>
-								</EmptyHeader>
-							)}
+
+							{resultDataObjects
+								? resultDataObjects.map((res, index) => {
+										if (res) {
+											index++;
+											// ++index;
+											return (
+												<Link
+													onClick={handleClick}
+													// to={`/details/${res.link}`}
+													to={res.link}
+													key={res.key}>
+													<img src={res.img} alt='recipe result' />
+													<ResultTitle>{res.title}</ResultTitle>
+													<ArrowRightIcon />
+												</Link>
+											);
+										}
+								  })
+								: null}
 						</ResultsDiv>
 
 						{recipe ? (
@@ -258,6 +318,7 @@ function Home() {
 								ingredients={recipe.ingredients}
 							/>
 						) : null}
+
 						<Community />
 					</main>
 				</ThemeProvider>

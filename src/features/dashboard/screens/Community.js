@@ -14,6 +14,7 @@ import {
 	ChatForm,
 	AvatarImg,
 	AvatarDiv,
+	EmptyHeader,
 } from '../../../infrastructure/theme/components/GlobalStyles';
 const auth = firebase.auth();
 const firestore = firebase.firestore();
@@ -65,32 +66,35 @@ function Community(props) {
 		dummy.current.scrollIntoView({ behavior: 'smooth' });
 	};
 	return (
-		<CommunityDiv>
-			<div>
-				{messages &&
-					messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+		<>
+			<EmptyHeader>Chat with the community!</EmptyHeader>
+			<CommunityDiv>
+				<div>
+					{messages &&
+						messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
-				<span ref={dummy}></span>
-			</div>
+					<span ref={dummy}></span>
+				</div>
 
-			<ChatForm onSubmit={sendMessage}>
-				<TextField
-					style={{ margin: 8 }}
-					value={formValue}
-					onChange={(e) => setFormValue(e.target.value)}
-					placeholder={`How'd it go?`}
-					fullWidth
-					InputLabelProps={{
-						shrink: true,
-					}}
-					color='secondary'
-				/>
+				<ChatForm onSubmit={sendMessage}>
+					<TextField
+						style={{ margin: 8 }}
+						value={formValue}
+						onChange={(e) => setFormValue(e.target.value)}
+						placeholder={`How'd it go?`}
+						fullWidth
+						InputLabelProps={{
+							shrink: true,
+						}}
+						color='secondary'
+					/>
 
-				<button type='submit' disabled={!formValue}>
-					<SendIcon />
-				</button>
-			</ChatForm>
-		</CommunityDiv>
+					<button type='submit' disabled={!formValue}>
+						<SendIcon />
+					</button>
+				</ChatForm>
+			</CommunityDiv>
+		</>
 	);
 }
 
